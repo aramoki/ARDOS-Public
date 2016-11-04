@@ -1,5 +1,5 @@
 <?php
-class imageviewer extends application{
+class imagaeviewer extends application{
     
     const application_name  = 'Image Viever';
     const author            = 'aramok';

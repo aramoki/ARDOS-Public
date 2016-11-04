@@ -35,8 +35,8 @@ mohorame[at ] gmail [dot ] com
     <body>
         <?php
         include 'kernel.php';
-        $filereader = new file_manager(__FILE__);
-        $icons = $filereader->list_dir_sorted($filereader->absolute_path . '/desktop');
+        $filereader = new FIO();
+        $icons = $filereader->list_dir_sorted(ABSPATH.'desktop');
 
 
         /*

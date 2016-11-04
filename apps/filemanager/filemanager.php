@@ -24,7 +24,7 @@ class filemanager extends application {
         //$projectdir = $_SERVER["DOCUMENT_ROOT"] . '/aramoknet/index.php';
         //filemanager-absolutepath == projectdir oluyor
         $this->UI = new UI_manager();
-        $this->filereader = new file_manager();
+        $this->filereader = new FIO();
         $this->file = $file;
     }
 
