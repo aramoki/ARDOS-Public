@@ -41,12 +41,12 @@ class UI_manager {
                 if ($is_application || $is_app_shortcut) {
                     $exe = str_replace('-', '/', reset((explode('.', $icon))));
                     $exef = str_replace('.app', '', end((explode('-', $icon))));
-                    $ext_image = (($is_app_shortcut) ? '/'.ABSDIR.'/apps/' . $exe : str_replace($_SERVER['DOCUMENT_ROOT'].'/'.ABSDIR.'/', '', $full_path)) . '/icon.png';
-                    $command = 'open_window(event,\'' . $exef . '\',\'' . (($is_app_shortcut) ? 'apps/' . $exe : str_replace($_SERVER['DOCUMENT_ROOT'].'/'.ABSDIR.'/', '', $full_path)) . '\')';
+                    $ext_image = (($is_app_shortcut) ? ABSDIR.'/apps/' . $exe : str_replace($_SERVER['DOCUMENT_ROOT'].ABSDIR.'/', '', $full_path)) . '/icon.png';
+                    $command = 'open_window(event,\'' . $exef . '\',\'' . (($is_app_shortcut) ? 'apps/' . $exe : str_replace($_SERVER['DOCUMENT_ROOT'].ABSDIR.'/', '', $full_path)) . '\')';
                     $file_info = 'Application';
                 } else {                                                                        //v---- buraya resetten null gelirse / koymuyoruz
-                    $fdir = (($is_folder_shortcut) ? $_SERVER["DOCUMENT_ROOT"].'/'.ABSDIR.'/'. reset((explode('.', $icon))) : $full_path);
-                    $ext_image = '/'.ABSDIR.'/lib/images/filetypes/folder.png';
+                    $fdir = (($is_folder_shortcut) ? $_SERVER["DOCUMENT_ROOT"].ABSDIR.'/'. reset((explode('.', $icon))) : $full_path);
+                    $ext_image = ABSDIR.'/lib/images/filetypes/folder.png';
                     $command = (($open_new_window == 1) ? 'open_window(event,\'filemanager\',\'apps/filemanager\',\'' . $fdir . '\')' : 'refresh_window(event,\'' . $fdir . '\',\'' . $window_id . '\')' );
                     $file_info = 'Folder';
                 }
@@ -90,7 +90,7 @@ class UI_manager {
                 <div class="row">
                     <div class="cell appicon">
                         <a href="#" onclick="close_window(event,<?= $application->window_id ?>)">
-                            <img src="<?= (($application->icon == 'default') ? 'lib/images/defaultapp.png' : '/'.ABSDIR.'/'.str_replace(ABSPATH, '', $application->path.'/'. $application->icon)) ?>">
+                            <img src="<?= (($application->icon == 'default') ? 'lib/images/defaultapp.png' : ABSDIR.'/'.str_replace(ABSPATH, '', $application->path.'/'. $application->icon)) ?>">
                         </a>
                     </div>
                     <div class="cell appname">
@@ -114,7 +114,8 @@ class UI_manager {
             </div>
             <div class="content <?= $application->layout_type ?>" 
                  style="width:<?= $application->window_width ?>px;
-                 height:<?= $application->window_height ?>px;">
+                 height:<?= $application->window_height ?>px;
+                 resize:<?= $application->resize ?>;">
                 <?= $application->draw_application_content(); ?>
             </div>
         </div>

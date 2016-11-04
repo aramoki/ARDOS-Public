@@ -17,6 +17,7 @@ class carbon extends application {
         $this->icon = $app_file_name . '.png';
         $this->window_id = $window_id;
         $this->file = $file;
+        $this->resize = parent::RESIZE_FULL;
     }
 
     public function application_css() {

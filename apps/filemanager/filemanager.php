@@ -19,7 +19,7 @@ class filemanager extends application {
         $this->name = self::application_name;
         $this->icon = $app_file_name . '.png';
         $this->window_id = $window_id;
-
+        $this->resize = parent::RESIZE_FULL;
 
         //$projectdir = $_SERVER["DOCUMENT_ROOT"] . '/aramoknet/index.php';
         //filemanager-absolutepath == projectdir oluyor

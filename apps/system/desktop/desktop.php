@@ -36,6 +36,7 @@ class desktop {
         <div class="footer">
             ardos v1.2.2610 BETA<br>
             aramok.net &copy; 2007 - 2016<br>
+            <?=ABSPATH.'::'.ABSDIR;?>
         </div>
 
         <?php

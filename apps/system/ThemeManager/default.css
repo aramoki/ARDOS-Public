@@ -158,9 +158,8 @@ div.window div.titlebar div.windowsactions a:active{
     filter: brightness(90%);
 }
 div.window div.content{
-    overflow: scroll;
+    overflow: auto;
     clear: both;
-    resize: both;
 }
 div.window div.content *{
     resize: none;
@@ -539,4 +538,28 @@ div.startmenubox li:active{
 span.error{
     color:#333;
     background-color:#e5aaa0;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    height:10px;
+}
+ 
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 1px; 
+    background-color:#ccc;
+    border:1px solid #666;
+    box-shadow:inset 1px 1px 0px #eee;
+    padding:2px;
+}
+
+::-webkit-resizer {
+  background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABHSURBVHjajM7RCQAgCATQo8Edyxl0qgv7CArqFAQPHipIQnVEcEBUZtLdITeZGWtuoSe8UeUWqtxCx+kf2lCh9WMHVZ4CDADj7xFC8l50hgAAAABJRU5ErkJggg==');
+  background-color: #fff;
+  background-repeat: no-repeat;
 }
