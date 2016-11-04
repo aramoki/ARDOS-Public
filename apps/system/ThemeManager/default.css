@@ -1,0 +1,542 @@
+body{
+    background-color:#eee;
+    padding:0px;
+    margin:0px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size:14px; 
+}
+
+h1,h2,h3,h4{
+    padding:0px;
+    margin:0px;
+    display:inline-block;
+}
+
+hr{ border:0px;
+    padding:0px;margin:5px 0px;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #eee;
+}
+
+p{padding:0px;margin:0px;}
+
+marquee{margin:0px;}
+
+div.fullwidth{width:100%}
+div.table{display:table;}
+div.row{display:table-row;}
+div.cell{display:table-cell;vertical-align:top;}
+.alright{text-align:right;}
+.alcenter{text-align:center;}
+.alleft{text-align:left;}
+
+div.desktop{
+    top:0px;
+    left:0px;
+    position:fixed;
+    width:100%;
+    height:100%;
+    display: inline-flex;
+    align-content: flex-start;
+    flex-flow: column wrap;
+    overflow: hidden;
+    padding:15px;
+    padding-bottom:140px;
+    background-color:#acb5c7;
+}
+
+
+
+
+
+
+
+
+div.icon{
+    cursor: default;
+    resize:none;
+    display:inline-block;
+    width: 80px;
+    height: 100px;
+    text-decoration:none;
+    color:#333;
+    text-align: center;
+    overflow: hidden;
+    position:relative;
+}
+div.icon:hover{-webkit-filter: brightness(110%);filter: brightness(110%);}
+div.icon p{
+    margin:0px;
+    padding:0px;
+}
+div.icon p.icon{
+    width: 32px;
+    height:32px;
+    display:inline-block;
+}
+div.icon p.name{
+    display:block;
+    word-wrap: break-word;
+    font-size:12px;
+    margin-top:4px;
+}
+div.icon p.name span.nameselective{
+    padding:0px;
+    margin:0px;
+    padding:0px 1px;
+
+}
+div.icon p.name span.nameinfo{
+    font-size:10px;
+}
+div.selectedicon{overflow: visible;z-index: 1;}
+div.selectedicon p.name span.nameselective{
+    background-color:#ddd;
+    outline:1px dashed #ddd;
+}
+div.selectedicon p.icon {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+div.icon img.shortcut {
+    position:absolute;
+    top:21px; 
+}
+
+
+
+
+
+
+
+div.window{
+    background-color:#eee;
+    border:1px solid #666;
+    position:absolute;
+    font-size:13px;
+    top:0px;
+    left:0px;
+    background-color:white;
+    box-shadow:0px 0px 7px #555;
+}
+
+div.window div.titlebar{
+    background-color:#666;
+    color:#fff;
+}
+div.window div.titlebar div.appicon{
+    width:22px;
+    vertical-align:middle;
+    padding:0px 4px;
+}
+div.window div.titlebar div.appname{
+    vertical-align:middle;
+}
+div.window div.titlebar div.windowsactions{
+    text-align:right;
+    vertical-align: middle;
+    padding-right:4px;
+}
+div.window div.titlebar:hover div.windowsactions a{
+    -webkit-filter: contrast(80%);
+    filter: contrast(80%);
+    transition: all 1s ease;
+}
+div.window div.titlebar div.windowsactions a{
+    vertical-align: middle;
+    display:inline-block;
+    -webkit-filter: contrast(0%);
+    filter: contrast(0%);
+    transition: all 1s ease;
+}
+div.window div.titlebar div.windowsactions a:hover{
+    -webkit-filter: brightness(150%);
+    filter: brightness(150%);
+}
+div.window div.titlebar div.windowsactions a:active{
+    -webkit-filter: brightness(80%);
+    filter: brightness(90%);
+}
+div.window div.content{
+    overflow: scroll;
+    clear: both;
+    resize: both;
+}
+div.window div.content *{
+    resize: none;
+}
+
+
+div.layout_default{
+    background-color:#ddd;
+    min-width: 200px;
+}
+div.layout_white{
+    background-color:#fff;
+    min-width: 200px;
+}
+div.layout_black{
+    background-color:#000;
+    color:#fff;
+    min-width: 200px;
+}
+
+
+
+
+
+div.iconview-horizontal{
+    padding:10px;
+    display: inline-flex;
+    align-content: flex-start;
+    flex-flow: row wrap;
+}
+
+
+
+
+
+div.toolbar{
+    background-color:#f1f1f1;
+    border-bottom:1px solid #ccc;
+    border-top:1px solid #666;
+}
+div.toolbar div.cell{
+    vertical-align: middle;
+}
+
+
+
+
+div.toolbar div.dirpath{
+    border-left:1px solid #fff;
+    position:relative;
+    padding:0px 4px;
+}
+div.toolbar div.dirpath input[type="text"].input_dirpath{
+    padding:4px 5px;
+    font-size:11px;
+    height:100%;
+    width:100%;
+    outline:none;
+    background-color: #fff;
+    border:1px solid #ccc;
+    box-shadow:0px 1px 0px #fff;
+    color:#666;
+    
+    box-sizing: border-box; /* css3 rec */
+    -moz-box-sizing: border-box; /* ff2 */
+    -ms-box-sizing: border-box; /* ie8 */
+    -webkit-box-sizing: border-box; /* safari3 */
+    -khtml-box-sizing: border-box; /* konqueror */
+}
+
+
+
+
+div.toolbar div.actionbuttons{
+    padding:4px 4px;
+    width:50px;
+    border-right:1px solid #ccc;
+}
+
+div.toolbar div.actionbuttons a{
+    display:inline-block;
+    text-decoration:none;
+    color:#666;
+    padding:1px 5px;
+    vertical-align: middle;
+    border:1px solid #ccc;
+    box-shadow:inset 1px 1px 0px #fff;
+    font-size:13px;
+}
+div.toolbar div.actionbuttons a:hover{cursor: pointer;}
+div.toolbar div.actionbuttons a img{
+    vertical-align: middle;
+}
+div.toolbar div.actionbuttons a:active{
+    box-shadow: 1px 1px 0px #fff;
+}
+
+div.toolbar ul{
+    font-size:12px;
+    padding:2px 7px;
+    margin:0px;
+    display:inline-block;
+    position:relative;
+}
+div.toolbar ul:hover{
+    background-color:#ddd;
+}
+div.toolbar ul:hover div{
+    display:block;
+}
+div.toolbar ul div{
+    display:none;
+    position:absolute;
+    background-color:#eee;
+    list-style-type: none;
+    margin:0px;
+    border:1px solid #999;
+}
+div.toolbar ul div li{
+    display:block;
+    padding:3px 10px;
+    width:100px;
+}
+div.toolbar ul div li:hover{
+    background-color:#ccc;
+}
+
+
+div.dialog_layout{
+    vertical-align:top;
+    width:100%;
+    height:100%;
+}
+
+div.dialog_layout .cell{
+    vertical-align:bottom;
+    padding:10px;
+}
+
+div.dialog_layout .cell:nth-child(even){
+    border-left:1px solid #eee;
+
+}
+div.dialog_layout .cell:nth-child(odd){
+    border-right:1px solid #999;
+    width: 48px;
+    background-color:#cfcfcf;
+}
+
+.button{
+    border:1px solid #999;
+    box-shadow:inset 1px 1px 0px #fff , inset -1px -1px 0px #ccc;
+    background-color:#eee;
+    text-decoration: none;
+    padding:5px 12px;
+    display:inline-block;
+    color:#333;
+    text-shadow:1px 1px 0px #fff;
+    vertical-align: middle;
+    margin:2px;
+}
+.button img{
+    vertical-align: middle;
+}
+
+.button:active , .button:focus{
+    box-shadow:inset -1px -1px 0px #fff , inset 1px 1px 0px #ccc;
+    text-shadow:-1px -1px 0px #fff;
+}
+
+
+
+
+.input{
+    margin:5px 0px;
+    font-size:13px;
+    border:1px solid #999;
+    box-shadow:1px 1px 0px #fff , inset 1px 1px 0px #ccc;
+    background-color:#fff;
+    text-decoration: none;
+    padding:4px 12px;
+    display:inline-block;
+    color:#333;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    outline:none;
+}
+
+
+
+.select {
+    -webkit-appearance: button;
+    -webkit-border-radius: 0px;
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+
+    background-image: url('images/bz.png');
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #999;
+
+    box-shadow:1px 1px 0px #fff , inset 1px 1px 0px #ccc;
+    background-color:#fff;
+
+    font-size:13px;
+    overflow: hidden;
+    padding: 4px 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:200px;
+    outline:none;
+    margin:5px 0px;
+}
+
+
+
+
+
+
+
+
+
+div.footer{
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    color:#666;
+    text-shadow:1px 1px 0px #ddd;
+    font-size: 12px;
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.contextmenu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+.contextmenu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+}
+.contextmenu li:hover {
+    background-color: #DEF;
+    cursor:default;
+}
+
+
+div.tasks{
+    width:100%;
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    background:#ddd;
+    border-top:1px solid #ddd;
+    color:#000;
+    box-shadow:inset 1px 1px 0px #fff;
+    padding:2px;
+}
+div.tasks li{
+    height:20px;
+    vertical-align: middle;
+    width:150px;
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    display:inline-block;
+    padding: 3px 12px;
+    cursor:default;
+    list-style-type: none;
+    transition: all .3s ease;
+    font-size:12px;
+    border:1px outset #bbb;
+    background:#ddd;
+
+}
+div.tasks li.selected{
+    border:1px inset #bbb;
+    background-color:#f1f1f1;
+}
+div.tasks li:active{
+    border:1px inset #bbb;
+}
+
+div.tasks li.startmenu{
+    width:50px;
+    padding:3px 12px;
+}
+div.tasks li.startmenu img{
+    vertical-align: top;
+}
+
+
+div.devnum{
+    width:100px;
+    height:50px;
+    text-align: center;
+    vertical-align: middle;
+    position:absolute;
+    font-size:30px;
+    font-weight: bold;
+    color:red;
+    bottom:10px;
+    right:10px;
+    background-color:rgba(0, 0, 0, 0.1);
+
+}
+
+pre{
+    padding:0px;
+    margin:0px;
+    display:inline-block;
+    width:100%;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+}
+
+pre code{
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size:13px;
+}
+
+
+
+
+
+div.startmenubox{
+    display:none;
+    position:fixed;
+    left:10px;
+    bottom:30px;
+    border:1px outset #ccc;
+    background-color:#ddd;
+    width:120px;
+}
+div.startmenubox li{
+    list-style-type: none;
+    padding:5px 20px;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #ccc;  
+    font-size:12px;
+}
+div.startmenubox li:hover{
+    background-color:#ddeefd;  
+}
+div.startmenubox li:active{
+    border-top:1px inset #eee;
+    border-bottom:1px inset #ccc;  
+}
+
+
+span.error{
+    color:#333;
+    background-color:#e5aaa0;
+}
