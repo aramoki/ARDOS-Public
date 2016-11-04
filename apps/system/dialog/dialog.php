@@ -17,9 +17,9 @@ class dialog extends application {
         $this->window_height = self::height;
         $this->path = dirname(__FILE__);
         $this->name = self::application_name;
-        $this->window_id = $window_id;
+        $this->window_id = $window_id ;
 
-
+        
         switch ($error) {
             case 1:
                 $this->icon = 'warning.png';
@@ -38,13 +38,13 @@ class dialog extends application {
                 $this->image = 'bug.png';
                 $this->error_type = 'Bugged:';
                 $errorinfo = error_get_last();
-                $this->error_message .= $errorinfo['message'].'<br>';
-                $this->error_message .= $errorinfo['file'].'<br>';
+                $this->error_message .= $errorinfo['message'] . '<br>';
+                $this->error_message .= $errorinfo['file'] . '<br>';
                 $this->window_height += 100;
                 $this->window_width += 100;
                 break;
-            
-            
+
+
             default:
                 $this->icon = 'dialogdialogbox.png';
                 $this->image = 'icon.png';
@@ -68,7 +68,7 @@ class dialog extends application {
         <div class="table dialog_layout">
             <div class="row" >
                 <div class="cell" style="text-align: right;">
-                    <img src="<?= $imgdir ?>/<?=$this->image?>">
+                    <img src="<?= $imgdir ?>/<?= $this->image ?>">
                 </div>
                 <div class="cell" ">
                     <b><?= $this->error_type ?></b><br>
