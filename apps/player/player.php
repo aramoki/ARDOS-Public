@@ -5,6 +5,8 @@ class player extends application {
     const application_name = 'Media Player';
     const author = 'aramok';
     const version = '1.0';
+    const info = "";
+    
     const width = 400;
     const height = 370;
 

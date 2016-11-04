@@ -89,8 +89,8 @@ class UI_manager {
             <div class="titlebar fullwidth table">
                 <div class="row">
                     <div class="cell appicon">
-                        <a href="#" onclick="close_window(event,<?= $application->window_id ?>)">
-                            <img src="<?= (($application->icon == 'default') ? 'lib/images/defaultapp.png' : ABSDIR.'/'.str_replace(ABSPATH, '', $application->path.'/'. $application->icon)) ?>">
+                        <a href="#" onclick="appinfo_window(event,<?= $application->window_id ?>)">
+                            <img title="Application Info" src="<?= (($application->icon == 'default') ? 'lib/images/defaultapp.png' : ABSDIR.'/'.str_replace(ABSPATH, '', $application->path.'/'. $application->icon)) ?>">
                         </a>
                     </div>
                     <div class="cell appname">
@@ -117,6 +117,9 @@ class UI_manager {
                  height:<?= $application->window_height ?>px;
                  resize:<?= $application->resize ?>;">
                 <?= $application->draw_application_content(); ?>
+            </div>
+            <div class="appinfobox draggable">
+                <?= $application->draw_application_info(); ?>
             </div>
         </div>
         <?php

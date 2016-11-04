@@ -5,6 +5,8 @@ class hashcalculator extends application {
     const application_name = 'Hash Calculator';
     const author = 'aramok';
     const version = '1.0';
+    const info = "";
+    
     const width = 540;
     const height = 340;
 

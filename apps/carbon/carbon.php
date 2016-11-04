@@ -5,6 +5,8 @@ class carbon extends application {
     const application_name = 'Carbon Browser';
     const author = 'aramok';
     const version = '1.1';
+    const info = "";
+    
     const width = 840;
     const height = 580;
 

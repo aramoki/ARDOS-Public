@@ -5,6 +5,8 @@ class systeminfo extends application {
     const application_name = 'System Info';
     const author = 'aramok';
     const version = '1.0';
+    const info = "";
+    
     const width = 540;
     const height = 370;
 

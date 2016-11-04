@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-aramok.net openScript v1.2.2710ext
+aramok.net openScript v1.2.1
 for more information 
 mohorame[at ] gmail [dot ] com
 -->
@@ -9,8 +9,8 @@ mohorame[at ] gmail [dot ] com
         <title>Aramok's Workspace</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="lib/jquery.js"></script>
+        <script src="lib/jquery-ui.js"></script>
         <script src="lib/aramok.js"></script>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
@@ -35,18 +35,13 @@ mohorame[at ] gmail [dot ] com
     <body>
         <?php
         include 'kernel.php';
+        
         $filereader = new FIO();
-        $icons = $filereader->list_dir_sorted(ABSPATH.'desktop');
+        $icons = $filereader->list_dir_sorted(ABSPATH . 'desktop');
 
 
-        /*
-         * 
-         *  Aramok.net
-         *  so you find it ^_^
-         *  you can copy script , and use it freeely 
-         *  its simple and usefull , dont forget js and css files
-         * 
-         */
+        $theme = new ThemeManager();
+        $theme->set_theme();
 
         $desktop = new desktop();
         $desktop->draw_desktop($icons);

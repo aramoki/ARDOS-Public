@@ -5,6 +5,8 @@ class notepad extends application {
     const application_name = 'Notepad ';
     const author = 'aramok';
     const version = '1.1';
+    const info = "";
+    
     const width = 840;
     const height = 580;
 

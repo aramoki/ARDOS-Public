@@ -4,6 +4,8 @@ class aboutme extends application {
     const application_name = 'About me';
     const author = 'aramok';
     const version = '1.0';
+    const info = "";
+    
     const width = 580;
     const height = 440;
 

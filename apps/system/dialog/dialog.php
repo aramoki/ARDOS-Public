@@ -4,7 +4,9 @@ class dialog extends application {
 
     const application_name = 'Dialog box';
     const author = 'aramok';
-    const version = '1.1';
+    const version = '1.3';
+    const info = "i like it";
+    
     const width = 340;
     const height = 190;
 
@@ -18,6 +20,7 @@ class dialog extends application {
         $this->path = dirname(__FILE__);
         $this->name = self::application_name;
         $this->window_id = $window_id ;
+        $this->resize = parent::RESIZE_NONE;
 
         
         switch ($error) {
@@ -40,8 +43,8 @@ class dialog extends application {
                 $errorinfo = error_get_last();
                 $this->error_message .= $errorinfo['message'] . '<br>';
                 $this->error_message .= $errorinfo['file'] . '<br>';
-                $this->window_height += 100;
-                $this->window_width += 100;
+                $this->window_height += 110;
+                $this->window_width += 240;
                 break;
 
 
@@ -65,12 +68,12 @@ class dialog extends application {
     public function draw_application_content() {
         $imgdir = str_replace($_SERVER["DOCUMENT_ROOT"], '', $this->path);
         ?>
-        <div class="table dialog_layout">
+<div class="table dialog_layout" >
             <div class="row" >
                 <div class="cell" style="text-align: right;">
                     <img src="<?= $imgdir ?>/<?= $this->image ?>">
                 </div>
-                <div class="cell" ">
+                <div class="cell wrap">
                     <b><?= $this->error_type ?></b><br>
                     <?= $this->error_message ?>
                 </div>

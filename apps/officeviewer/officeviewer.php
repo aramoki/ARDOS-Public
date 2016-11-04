@@ -5,6 +5,8 @@ class officeviewer extends application {
     const application_name = 'Office';
     const author = 'aramok';
     const version = '1.0';
+    const info = "";
+    
     const width = 900;
     const height = 600;
 

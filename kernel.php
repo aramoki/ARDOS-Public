@@ -4,7 +4,7 @@ if(!defined('ABSPATH')){
 }
 
 if(!defined('ABSDIR')){
-    define('ABSDIR', str_replace(filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').'/','', dirname(__FILE__)));
+    define('ABSDIR', str_replace($_SERVER['DOCUMENT_ROOT'],'', dirname(__FILE__)));
 }
 
 
@@ -17,7 +17,4 @@ include ABSPATH.'apps/system/FIO/FIO.php';
 
 date_default_timezone_set('Europe/Istanbul');
 
-$theme = new ThemeManager();
-$theme ->set_theme();
-
-
+?>
