@@ -6,9 +6,6 @@ class filemanager extends application {
     const author = 'aramok';
     const version = '1.2';
     const info = "This if file manager that allows u to see whats inside folders :D";
-    
-    
-    
     const width = 640;
     const height = 380;
 
@@ -69,7 +66,54 @@ class filemanager extends application {
                     url: 'apps/filemanager/navigate.php',
                     type: 'post',
                     data: dataObject,
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+
+                        // Upload progress
+                        xhr.upload.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                //Do something with upload progress
+                                //console.log(percentComplete);
+                                $("html").css('cursor', 'wait');
+                                $(".loading").show();
+                            }
+                        }, false);
+
+                        // Download progress
+                        xhr.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                // Do something with download progress
+                                //console.log(percentComplete);
+                                $("html").css('cursor', 'wait');
+                                $(".loading").show();
+                            }
+                        }, false);
+
+
+                        //Done progress
+                        xhr.addEventListener("load", function (evt) {
+                            $("html").css('cursor', 'auto');
+                            $(".loading").hide();
+                        }, false);
+
+
+                        return xhr;
+                    },
+                    /*xhrFields: {
+                     onprogress: function (e) {
+                     if (e.lengthComputable) {
+                     var pct = (e.loaded / e.total) * 100;
+                     $("html").css('cursor', 'wait');
+                     $(".loading").show();
+                     //$(".loading .progress").css('width', pct + '%');
+                     }
+                     }
+                     },*/
                     success: function (data, status) {
+                        //$("html").css('cursor', 'auto');
+                        //$(".loading").hide();
                         $('#window' + window_id + ' .file-manager-content').html(data);
                         $('#window' + window_id + ' .inpdirpath').val(dir);
 
@@ -99,7 +143,7 @@ class filemanager extends application {
         ?>
         <div class="table fullwidth">
             <div class="row">
-                <div class="cell actionbuttons">
+                <div class="cell actionbuttons" style="width:50px;">
                     <a href="#" onclick="<?= $up_action ?>">
                         <img src="<?= $imagedir ?>/folder_up.png"> Up
                     </a>

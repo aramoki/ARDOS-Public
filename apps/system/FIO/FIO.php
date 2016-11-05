@@ -14,7 +14,7 @@ class FIO {
         } else if ($directory == '') {
             $directory = "/";
         }
-        $scanned_directory['path'] = $directory;
+        $scanned_directory['path'] = str_replace('//', '/', $directory);
         $scanned_directory['name'] = array_diff(scandir($directory), array('..', '.', '.DS_Store'));
         return $scanned_directory;
     }

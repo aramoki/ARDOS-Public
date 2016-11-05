@@ -26,18 +26,18 @@ abstract class application {
     abstract public function draw_application_toolbar();
 
     public function draw_application_info() {
-        $imagedir = str_replace($_SERVER["DOCUMENT_ROOT"].ABSDIR.'/', '', $this->path);
+        $imagedir = str_replace($_SERVER["DOCUMENT_ROOT"] . ABSDIR . '/', '', $this->path);
         ?>
-        <div>
-            <a href="#" style="position:absolute;top:0px;right:0px;" onclick="appinfo_window(event,<?=$this->window_id?>)">
-                            <img src="lib/images/close.png">
+        <div class="infobar">
+            <a href="#" style="position:absolute;top:0px;right:0px;" onclick="appinfo_window(event,<?= $this->window_id ?>)">
+                <img src="lib/images/close.png">
             </a><br>
             <center>
-                <img src="<?=$imagedir.'/'.'/icon.png'?>"><br>
-                <b><?=static::application_name?></b><br>Version: <?=static::version?><br>
-                Author: <i><?=static::author?></i><hr>
-            
-                <font color="#555"><?=static::info?></font>
+                <img src="<?= $imagedir . '/' . '/icon.png' ?>"><br>
+                <b><?= static::application_name ?></b><br>Version: <?= static::version ?><br>
+                Author: <i><?= static::author ?></i><hr>
+
+                <font color="#555"><?= static::info ?></font>
             </center>
         </div>
         <?php

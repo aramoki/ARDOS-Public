@@ -6,7 +6,6 @@ class dialog extends application {
     const author = 'aramok';
     const version = '1.3';
     const info = "i like it";
-    
     const width = 340;
     const height = 190;
 
@@ -19,10 +18,10 @@ class dialog extends application {
         $this->window_height = self::height;
         $this->path = dirname(__FILE__);
         $this->name = self::application_name;
-        $this->window_id = $window_id ;
+        $this->window_id = $window_id;
         $this->resize = parent::RESIZE_NONE;
 
-        
+
         switch ($error) {
             case 1:
                 $this->icon = 'warning.png';
@@ -30,12 +29,14 @@ class dialog extends application {
                 $this->error_type = 'Warning:';
                 $this->error_message = "Not allowed more than one instance";
                 break;
+            
             case 2:
                 $this->icon = 'error.png';
                 $this->image = 'app.png';
                 $this->error_type = 'Error:';
                 $this->error_message = "Class definition error!";
                 break;
+            
             case 3:
                 $this->icon = 'error.png';
                 $this->image = 'bug.png';
@@ -68,7 +69,7 @@ class dialog extends application {
     public function draw_application_content() {
         $imgdir = str_replace($_SERVER["DOCUMENT_ROOT"], '', $this->path);
         ?>
-<div class="table dialog_layout" >
+        <div class="table dialog_layout" >
             <div class="row" >
                 <div class="cell" style="text-align: right;">
                     <img src="<?= $imgdir ?>/<?= $this->image ?>">

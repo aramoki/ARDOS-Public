@@ -27,7 +27,8 @@ class UI_manager {
         $data = '';
         if ($icons == null) {
             return null;
-        }
+        } 
+       
         foreach ($icons['name'] as $icon) {
             $full_path = $icons['path'] . '/' . $icon;
             $extension = end((explode('.', $icon)));
@@ -85,7 +86,7 @@ class UI_manager {
         <script>feature_draggable();</script>
         <?= $application->application_javascript(); ?>
         <?= $application->application_css(); ?>
-        <div  onclick="focus_window(event,<?= $application->window_id ?>)"  class="window draggable" id="window<?= $application->window_id ?>">
+        <div  onclick="focus_window(event,<?= $application->window_id ?>)"  class="window draggable resizable" id="window<?= $application->window_id ?>">
             <div class="titlebar fullwidth table">
                 <div class="row">
                     <div class="cell appicon">

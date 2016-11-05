@@ -22,21 +22,26 @@ class desktop {
             feature_draggable();
         </script>
 
-        <!---
+        <!---    <li data-action="open" class="startmenu" onclick="openstartmenu(event);">Start</li>
+           --->
         <div class="tasks">
-            <li data-action="open" class="startmenu" onclick="openstartmenu(event);"><img src="lib/win.gif"> Start</li>
+            <li data-action="open" class="showhidetasks" onclick="showhidetasks(event)">
+                <img src="lib/tasks.png"><p class="info">Hide / Show Tasks</p>
+            </li>
+            <div class="taskscontainer">
+            </div>
         </div>
-        <div class="startmenubox">
-            <li >Programs</li>
-            <li >Etc...</li>
-            <li >Shutdown</li>
+        
+        <div class="loading" style="z-index: 1000;">
+            <img src="lib/loading.gif">
+            <!---<p class="progress">&nbsp;</p>-->
         </div>
-        --->
+
 
         <div class="footer">
-            ardos v1.2.2610 BETA<br>
+            ardos v1.3.00 BETA still beta :(<br>
             aramok.net &copy; 2007 - 2016<br>
-            <?=ABSPATH.'::'.ABSDIR;?>
+            <?= ABSPATH . '::' . ABSDIR; ?>
         </div>
 
         <?php

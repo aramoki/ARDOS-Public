@@ -42,7 +42,9 @@ div.desktop{
     overflow: hidden;
     padding:15px;
     padding-bottom:140px;
-    background-color:#a6d4c4;
+    background-color:#a4dbe7;
+    background-image:url('http://kaba35.com/wp-content/uploads/2015/11/Savin-NY-Website-Background-Web.jpg');
+    background-position-y: bottom;
 }
 
 
@@ -278,7 +280,6 @@ div.toolbar div.dirpath a.dirp:hover{
 
 div.toolbar div.actionbuttons{
     padding:4px 4px;
-    width:50px;
     border-right:1px solid #ccc;
 }
 
@@ -423,7 +424,29 @@ div.dialog_layout .cell:nth-child(odd){
 
 
 
+div.loading{
+    position:absolute;
+    top:50%;
+    left:50%;
+    background-color:rgba(255,255,255,0.5);
+    /*width: 200px;*/
+    text-align: center;
+    border-radius: 5px;
+    padding:5px;
+    display:none;
+}
+/*
 
+
+
+div.loading p.progress{
+    width:10%;
+    border:1px solid #999;
+    border-radius:3px;
+    background-color: #ccc;
+    box-shadow:inset 1px 1px 0px #ddd;
+    height:8px;
+}*/
 
 
 
@@ -478,44 +501,61 @@ div.tasks{
     position:absolute;
     bottom:0px;
     left:0px;
-    background:#ddd;
-    border-top:1px solid #ddd;
-    color:#000;
-    box-shadow:inset 1px 1px 0px #fff;
-    padding:2px;
 }
 div.tasks li{
-    height:20px;
-    vertical-align: middle;
-    width:150px;
-    max-width: 150px;
-    overflow: hidden;
-    white-space: nowrap;
-    display:inline-block;
-    padding: 3px 12px;
-    cursor:default;
     list-style-type: none;
-    transition: all .3s ease;
-    font-size:12px;
-    border:1px outset #bbb;
-    background:#ddd;
-
+    margin:0px;
+    padding:0px;
+    display:inline-block;
+    background-color:rgba(51,51,51,0.5);
+    padding:2px 8px;
 }
-div.tasks li.selected{
-    border:1px inset #bbb;
-    background-color:#f1f1f1;
+div.tasks li p.info{
+    display:none;
+    position:absolute;
+    background-color:#ffc;
+    box-shadow:0px 0px 4px #999;
+    padding:2px 4px;
+    font-size:10px;
+    top:-20px;
+    border-radius:2px;
 }
 div.tasks li:active{
-    border:1px inset #bbb;
+    background-color:rgba(121,121,121,0.5);
+}
+div.tasks li:hover p.info{
+    display:inline-block;
 }
 
-div.tasks li.startmenu{
-    width:50px;
-    padding:3px 12px;
+div.tasks li img{
+    vertical-align: middle;
+    opacity: 0.5;
 }
-div.tasks li.startmenu img{
-    vertical-align: top;
+div.tasks li:hover img{
+    opacity:1;
 }
+
+div.tasks li.selected img{
+    opacity: 1;
+}
+
+div.tasks li.showhidetasks{
+    border-radius:2px;
+}
+
+div.tasks div.taskscontainer{
+    display:inline-block;
+    transition: all 1s ease;
+}
+
+
+
+
+
+
+
+
+
 
 
 div.devnum{
