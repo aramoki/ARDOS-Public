@@ -8,7 +8,7 @@ include '../../../kernel.php';
 
 
 function shutdown() {
-    include '../dialog/dialog.php';
+    include ABSPATH.'apps/system/dialog/dialog.php';
     $window_id = filter_input(INPUT_POST, "window_id", FILTER_DEFAULT);
     $error = error_get_last();
     if ($error['type'] === E_ERROR || $error['type'] === E_WARNING || $error['type'] === E_NOTICE) {

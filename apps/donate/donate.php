@@ -1,8 +1,8 @@
 <?php
 
-class player extends application {
+class donate extends application {
 
-    const application_name = 'Media Player';
+    const application_name = 'Donation';
     const author = 'aramok';
     const version = '1.0';
     const width = 400;
@@ -22,111 +22,48 @@ class player extends application {
     public function application_css() {
         ?>
         <style>
-            div.time{
-                text-align:right;
-                width:40px;
-            }
-            div.layout{
-                vertical-align:middle;
-                padding:5px;
-                border-bottom:1px solid #ccc;
-                border-top:1px solid #eee;
-                box-shadow:0px 1px 0px #eee , 0px -1px 0px #ccc;
-            }
-            div.slider{
+            div.lay{
                 width:100%;
-                position:relative;
-                background-color:#eee;
-                border-radius:2px;
-                border:1px solid #666;
-                height:10px;
             }
-            div.slider p.slide{
-                position:absolute;
-                height:10px;
-                top:0px;
-                left:0px;
-                background-color:#4587ed;
-                border-radius:0px;
-                border-right:1px solid #666;
+            div.lay .cell {
+                padding:10px 5px;
             }
+
+            p.btcaddress{
+                background-color:#dedeef;
+                border:1px inset #eef;
+            }
+
         </style>
         <?php
     }
 
     public function application_javascript() {
-        $music_file = str_replace($_SERVER["DOCUMENT_ROOT"], '', $this->file);
-        $img_path = str_replace($_SERVER["DOCUMENT_ROOT"], '', $this->path);
         ?>
         <script>
-            $(document).ready(function () {
-                event.preventDefault();
-
-                var audioElement = document.createElement("audio");
-                audioElement.setAttribute("src", "<?= $music_file ?>");
-                //audioElement.setAttribute("autoplay", "autoplay");
-
-                audioElement.load();//basa aliyor
-                $.get();
-
-                var duration;
-                audioElement.addEventListener("loadedmetadata", function (_event) {
-                    duration = audioElement.duration;
-                    var seeking = audioElement.progress;
-                    $(".time").html(Math.round(duration / 60) + ":" + Math.round(duration % 60));
-                });
-
-                $(".stop").click(function () {
-                    audioElement.load();
-                    $(".play").attr("id", "0");
-                    $(".play").html("<img src=\'<?= $img_path ?>/play.png\'>");
-                });
-
-                $(".play").click(function () {
-                    if ($(this).attr("id") == "0") {
-                        $(this).attr("id", "1");
-                        $(this).html("<img src=\'<?= $img_path ?>/pause.png\'>");
-                        audioElement.play();
-                    } else {
-                        $(this).attr("id", "0");
-                        $(this).html("<img src=\'<?= $img_path ?>/play.png\'>");
-                        audioElement.pause();
-                    }
-                });
-
-                function live_slider() {
-                    $(".slide").css("width", Math.round((100 * audioElement.currentTime / duration)) + "%");
-                    setTimeout(live_slider, 1000);
-                }
-                live_slider();
-
-            });
+            function copyToClipboard() {
+                var text = $('.btcaddress').attr('addres');
+                window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+            }
         </script>
         <?php
     }
 
     public function draw_application_content() {
-
-        $music_file = str_replace($_SERVER["DOCUMENT_ROOT"], '', $this->file);
-        $img_path = str_replace($_SERVER["DOCUMENT_ROOT"], '', $this->path);
+        $imagedir = str_replace($_SERVER["DOCUMENT_ROOT"], '', dirname(__FILE__));
         ?>
-        <img id="visual" src="<?= $img_path ?>/visual.png">
 
-        <div class="layout">
-            <marquee><?=$music_file?></marquee>
-        </div>
-        <div class="layout">
-            <div class="slider">
-                <p class="slide"></p>
+        <div class="lay table">
+            <div class="row">
+                <div class="cell alcenter altop" style="width:222px">
+                    <img class="qr" src="<?= $imagedir ?>/donate.gif">
+                </div>
+                <div class="cell alcenter almiddle" >
+                    <p class="btcaddress" addres="14kbMPfwhnv25oFfFwAsDuiEC732gRQ3hR">14kb MPfw hnv2 <br>5oFf FwAs DuiE <br>C732 gRQ3 hR</p>
+                    <a href="#" class="button" onclick="copyToClipboard();">Copy</a>
+
+                </div>
             </div>
-        </div>
-        <div class="layout">
-            <a class="button stop">
-                <img src="<?= $img_path ?>/stop.png">
-            </a>
-            <a class="button play" id="0">
-                <img src="<?= $img_path ?>/play.png">
-            </a>
         </div>
         <?php
     }

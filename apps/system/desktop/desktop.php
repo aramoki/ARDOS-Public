@@ -28,13 +28,35 @@ class desktop {
             <li data-action="open" class="showhidetasks" onclick="showhidetasks(event)">
                 <img src="lib/tasks.png"><p class="info">Hide / Show Tasks</p>
             </li>
+
             <div class="taskscontainer">
             </div>
         </div>
-        
+
         <div class="loading" style="z-index: 1000;">
             <img src="lib/loading.gif">
             <!---<p class="progress">&nbsp;</p>-->
+        </div>
+
+        <div class="ardosinfo" style="z-index: 1000;">
+            <img src="lib/emotes/rise.gif">
+            ardos is rising!<br>
+            Will be available to download in <a href="https://github.com/aramoki/ardos">Github</a> and here after first stable version launches.<br>
+            <img src="lib/emotes/1.gif"><img src="lib/emotes/2.gif"><img src="lib/emotes/3.gif"><br>
+            donations really helps <a href="#donate" class="button" onclick="open_window(event, 'donate', 'apps/donate')"><img src="lib/emotes/ex.gif"> &nbsp;Donate &nbsp;&nbsp;</a>
+        </div>
+
+        <div class="user">
+            <img src="lib/drawer.png" onclick="sliderusermenu(event)">
+        </div>
+
+        <div class="usermenu">
+            <ul>
+                <li><a href="#">Contributions</a></li>
+                <li><a href="#">User Profile</a></li>
+                <li><a href="#">Preferences</a></li>
+                <li><a href="#">logout</a></li>
+            </ul>
         </div>
 
 

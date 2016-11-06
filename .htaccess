@@ -1,0 +1,1 @@
+ErrorDocument 404 /lib/errorpage.php?error=404

@@ -33,13 +33,12 @@ mohorame[at ] gmail [dot ] com
         </script>
     </head>
     <body>
-        
-        Aramok's Personal workspace , all is freeware here you can download  , copy and use all of em.
-        
-        
+        <div >
+            Aramok's Personal workspace , all is freeware here you can download  , copy and use all of em.
+        </div>
         <?php
         include 'kernel.php';
-        
+
         $filereader = new FIO();
         $icons = $filereader->list_dir_sorted(ABSPATH . 'desktop');
 
@@ -49,7 +48,9 @@ mohorame[at ] gmail [dot ] com
         $desktop = new desktop();
         $desktop->draw_desktop($icons);
         ?>
+
     </body>
+
 </html>
 
 

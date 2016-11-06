@@ -12,7 +12,7 @@ class dialog extends application {
     public $error_message;
     public $error_type;
 
-    function __construct($error, $window_id) {
+    function __construct($error, $window_id, $ext_error = null) {
         $this->layout_type = 'layout_default';
         $this->window_width = self::width;
         $this->window_height = self::height;
@@ -21,6 +21,9 @@ class dialog extends application {
         $this->window_id = $window_id;
         $this->resize = parent::RESIZE_NONE;
 
+        if ($ext_error != null) {
+            $error = $ext_error;
+        }
 
         switch ($error) {
             case 1:
@@ -29,14 +32,14 @@ class dialog extends application {
                 $this->error_type = 'Warning:';
                 $this->error_message = "Not allowed more than one instance";
                 break;
-            
+
             case 2:
                 $this->icon = 'error.png';
                 $this->image = 'app.png';
                 $this->error_type = 'Error:';
                 $this->error_message = "Class definition error!";
                 break;
-            
+
             case 3:
                 $this->icon = 'error.png';
                 $this->image = 'bug.png';
@@ -47,13 +50,21 @@ class dialog extends application {
                 $this->window_height += 110;
                 $this->window_width += 240;
                 break;
+            case 404:
+                $ref = htmlspecialchars($_SERVER['HTTP_REFERER']);
+                $this->icon = 'warning.png';
+                $this->image = '404.png';
+                $this->error_type = 'Error: Page not found';
+                $this->error_message .= '"'.$ref.'"<br><br>';
+                $this->error_message .= 'You can visit the <a href="http://aramok.net">Main page</a> or you can get <a target="_blank" href="https://www.wikipedia.org/wiki/HTTP_404">more information</a> about this error';
+                break;
 
 
             default:
                 $this->icon = 'dialogdialogbox.png';
                 $this->image = 'icon.png';
                 $this->error_type = 'info:';
-                $this->error_message = "Dialogbox!";
+                $this->error_message = "hello";
                 break;
         }
     }

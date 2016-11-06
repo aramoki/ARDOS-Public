@@ -44,6 +44,26 @@ class FIO {
     public static function is_folder($file) {
         return is_dir($file);
     }
+    
+    public static function delete_file($file){
+        if(file_exists($file)){;
+            if(@unlink($file)){
+                echo 'success';
+            }else{
+                echo 'failure';
+            }
+        }
+    }
+     public static function rename_file($file,$newfilename){
+        if(file_exists($file)){;
+            if(@rename($file,dirname($file).'/'.$newfilename)){
+                echo 'success';
+                
+            }else{
+                echo 'failure';
+            }
+        }
+    }
 
   
 }

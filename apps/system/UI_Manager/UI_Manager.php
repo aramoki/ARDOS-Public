@@ -28,7 +28,8 @@ class UI_manager {
         if ($icons == null) {
             return null;
         } 
-       
+        $animation_delay = 0;
+        $animation_speed = count($icons['name']);
         foreach ($icons['name'] as $icon) {
             $full_path = $icons['path'] . '/' . $icon;
             $extension = end((explode('.', $icon)));
@@ -64,7 +65,7 @@ class UI_manager {
             $vowels = array(".dir", ".app");
             $icon_name = str_replace($vowels, '', $icon);
             $data .=
-                    '<div id="' . $icon . '" class="icon draggable" ondblclick="' . $command . '">
+                    '<div id="' . $icon . '" class="icon draggable" ondblclick="' . $command . '" style="-webkit-animation-delay:'.($animation_delay++/(2*$animation_speed)).'s;">
                 <p class="icon">' . (($is_app_shortcut || $is_folder_shortcut) ? $scut_icon : '') . '<img src="' . ((strlen($icon_name) > 0) ? $ext_image : 'lib/images/filetypes/root.png') . '"></p>
                 <p class="name"><span class="nameselective">' . ((strlen($icon_name) > 0) ? $icon_name : 'root') . '</span><br>
                     <span class="nameinfo">' . $file_info . '<span></p>

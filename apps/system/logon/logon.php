@@ -47,37 +47,58 @@ class logon extends application {
             function login<?= $this->window_id ?>(event) {
                 event.preventDefault();
                 var dataObject = {};
-                dataObject["username"] = $("#username<?= $this->window_id ?>").val();
-                dataObject["password"] = $("#password<?= $this->window_id ?>").val();
+                dataObject["username"] = $("#aramok-username<?= $this->window_id ?>").val();
+                dataObject["password"] = $("#aramok-password<?= $this->window_id ?>").val();
                 $.ajax({
                     url: "<?= $jsdir ?>/login.php",
                     type: "post",
                     data: dataObject,
                     success: function (data, status) {
-                        $("#connection_result<?= $this->window_id ?>").html(data);
+                        var result = data.split(',');
+                        var loginsuccess = (result[2] === 'true');
+                        
+                        if (loginsuccess) {
+                            createCookie('username', result[0], 1);
+                            //$(".tasks").append('<li class="userloginindicator"><img src="lib/user.gif"><p class="info">username</li>');
+                            close_window(event,<?=$this->window_id?>);
+                        }else{
+                            //$("li.userloginindicator").remove();
+                            alert('error loggging in');
+                        }
                     }}); // end ajax call
+            }
+            function logout<?= $this->window_id ?>(event) {
+                event.preventDefault();
+                eraseCookie('username');
+                close_window(event,<?=$this->window_id?>);
             }
         </script>
         <?php
     }
 
     public function draw_application_content() {
+        $username_cookie = filter_input(INPUT_COOKIE, "username", FILTER_DEFAULT);
         ?><div class="loginbox"><?php
-        include $_SERVER["DOCUMENT_ROOT"].'/aramoknet/apps/system/database/database.php';
-        $db = new mysql_connector();
-        
-        ?>
-        
-            <span><p>&nbsp;</p>Enter Password for login</span>
-            <span><p>Username:</p><input id="username<?= $this->window_id ?>" type="text" class="input"></span>
-            <span><p>Password:</p><input id="password<?= $this->window_id ?>" type="password" class="input"></span>
-            
-            <span><p>&nbsp;</p><a onclick="login<?= $this->window_id ?>(event);" href="#" class="button"> Login </a></span>
-            <div id="connection_result<?= $this->window_id ?>"> </div>
+        if (isset($username_cookie)) {
+            ?>
+                Your are allready logged in!<br>
+                <span><p>&nbsp;</p><a onclick="logout<?= $this->window_id ?>(event);" href="#" class="button"> Logout </a></span>   
+                <?php
+            } else {
+                ?>
+
+                <span><p>&nbsp;</p>Enter Password for login</span>
+                <span><p>Username:</p><input id="aramok-username<?= $this->window_id ?>" type="text" class="input"></span>
+                <span><p>Password:</p><input id="aramok-password<?= $this->window_id ?>" type="password" class="input"></span>
+
+                <span><p>&nbsp;</p><a onclick="login<?= $this->window_id ?>(event);" href="#" class="button"> Login </a></span>
+                <div id="connection_result<?= $this->window_id ?>"> </div>
+                <?php
+            }
+            ?>
         </div>
         <?php
         //include __DIR__.'/../database/database.php';
-        
     }
 
     public function draw_application_toolbar() {
