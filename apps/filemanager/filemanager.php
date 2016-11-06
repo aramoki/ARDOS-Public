@@ -53,7 +53,16 @@ class filemanager extends application {
             function uplevel_dir(event, window_id) {
                 var path = $('#window' + window_id + ' .inpdirpath').val();
                 var uplevel = path.substring(0, path.lastIndexOf("/"));
-
+                var username = readCookie('username');
+                if(username === null){
+                     var level = ((path + '/').replace('<?= ABSPATH ?>', '')).split('/').length;
+                     if(level === 1){
+                         open_window(event, 'dialog', 'apps/system/dialog',4);
+                         return 0;
+                     }
+                }else{
+                   //giris yapilmissa izin ver her yere
+                }
 
                 refresh_window(event, uplevel, window_id);
             }
@@ -116,8 +125,16 @@ class filemanager extends application {
                         //$(".loading").hide();
                         $('#window' + window_id + ' .file-manager-content').html(data);
                         $('#window' + window_id + ' .inpdirpath').val(dir);
+                        var dirs;
+                        var username = readCookie('username');
+                        
+                        if (username === null) {
+                            dirs = ((dir + '/').replace('<?= ABSPATH ?>', 'Root/')).split('/');
+                        } else {
+                            dirs = dir.split("/");
+                        }
 
-                        var dirs = dir.split("/");
+
                         $('#window' + window_id + ' .dirpath .dirn_holder').html('');
                         dirs.forEach(function (dir) {
                             if (dir.length > 0) {
@@ -136,6 +153,7 @@ class filemanager extends application {
     }
 
     public function draw_application_toolbar() {
+        $username = filter_input(INPUT_COOKIE, "username", FILTER_DEFAULT);
         $up_action = 'uplevel_dir(event,' . $this->window_id . ')';
         $imagedir = str_replace($_SERVER["DOCUMENT_ROOT"], '', dirname(__FILE__));
 
@@ -154,7 +172,13 @@ class filemanager extends application {
                         <?php
                         $dirn = (isset($this->file)) ? $this->file : "/";
 
-                        $dirs = explode('/', $dirn);
+                        if (isset($username)) {
+                            $dirs = explode('/', $dirn);
+                        } else {
+                            $dirs = explode('/', str_replace(ABSPATH, 'Root/', $dirn));
+                        }
+
+
                         foreach ($dirs as $dir) {
                             if (strlen($dir) > 0) {
                                 echo '<a href="#" class="dirp">' . $dir . '</a><img src="' . $sep . '">';

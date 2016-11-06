@@ -50,6 +50,13 @@ class dialog extends application {
                 $this->window_height += 110;
                 $this->window_width += 240;
                 break;
+            case 4:
+                $this->icon = 'warning.png';
+                $this->image = 'key.png';
+                $this->error_type = 'Restricted:';
+                $this->error_message .= 'User Not Authorized<br>';
+                $this->error_message .= 'use <a href="#" onclick="open_app(event,\'apps/system/logon\')" >logon application</a> to login system'.'<br>';
+                break;
             case 404:
                 $ref = htmlspecialchars($_SERVER['HTTP_REFERER']);
                 $this->icon = 'warning.png';

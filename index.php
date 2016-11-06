@@ -13,7 +13,7 @@ mohorame[at ] gmail [dot ] com
         <script src="lib/jquery-ui.js"></script>
         <script src="lib/aramok.js"></script>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -33,9 +33,9 @@ mohorame[at ] gmail [dot ] com
         </script>
     </head>
     <body>
-        <div >
+        <!---<div >
             Aramok's Personal workspace , all is freeware here you can download  , copy and use all of em.
-        </div>
+        </div>--->
         <?php
         include 'kernel.php';
 

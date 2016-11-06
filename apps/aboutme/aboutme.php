@@ -27,12 +27,18 @@ class aboutme extends application {
         <style>
             div.content div.pad{
                 height:100%;
-                background-color:#fc0;
+                width:100%;
                 padding:10px;
+                box-sizing: border-box;
             }
             div.content div.cell {
                 padding:10px;
                 vertical-align:top;
+            }
+            div.content div.roundpict{
+                width:150px;
+                border:1px solid #cecece;
+                background-image: url('https://s-media-cache-ak0.pinimg.com/236x/4d/d0/1d/4dd01de5a8c0cae88236c09c96e6b858.jpg');
             }
             div.content div.roundpict img{
                 border-radius:5px;
@@ -50,7 +56,7 @@ class aboutme extends application {
         ?>
 
 
-        <div class="table">
+        <div class="table pad">
             <div class="row">
                 <div class="cell roundpict"  style="border-right:1px solid #ccc;">
                     <img  src="<?=$imagedir?>/S.gif">

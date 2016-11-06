@@ -111,7 +111,7 @@ class UI_manager {
                     </div>
                 </div>
             </div>
-            <div class="toolbar">
+            <div class="toolbar <?= $application->layout_type ?>_toolbar">
                 <?= $application->draw_application_toolbar(); ?>
             </div>
             <div class="content <?= $application->layout_type ?>" 

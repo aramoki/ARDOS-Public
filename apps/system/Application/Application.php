@@ -2,8 +2,8 @@
 
 abstract class application {
 
-    const RESIZE_X = 'vertical';
-    const RESIZE_Y = 'horizontal';
+    const RESIZE_X = 'horizontal';
+    const RESIZE_Y = 'vertical';
     const RESIZE_FULL = 'both';
     const RESIZE_NONE = 'none';
 

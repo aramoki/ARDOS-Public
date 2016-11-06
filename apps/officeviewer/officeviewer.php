@@ -25,14 +25,15 @@ class officeviewer extends application {
     public function application_css() {
         ?>
         <style>
-            div.content-office{
-                width:100%;
-                height:100%;
-            }
-            div.content-office iframe{
+            iframe.docview{
                 width:100%;
                 height:100%;
                 resize:none;
+                box-sizing: border-box;
+                margin:0px;
+                border:0px;
+                padding:0px;
+                display:block;
             }
         </style>
         <?php
@@ -45,11 +46,9 @@ class officeviewer extends application {
     public function draw_application_content() {
         $imgdir = str_replace($_SERVER["DOCUMENT_ROOT"], '', $this->file);
         ?>
-        <div class="content-office">
-            <iframe src="http://docs.google.com/viewer?url=http://aramok.net<?= $imgdir ?>&embedded=true">
+        <iframe class="docview" src="http://docs.google.com/viewer?url=http://aramok.net<?= $imgdir ?>&embedded=true">
                 Loading
             </iframe>
-        </object>
         <?php
     }
 

@@ -23,7 +23,19 @@ class notepad extends application {
     }
 
     public function application_css() {
-        
+        ?>
+        <style>
+            pre.dot span:before {
+                counter-increment: line;
+                content: counter(line);
+                display: inline-block;
+                border-right: 1px solid #ddd;
+                padding: 0 .5em;
+                margin-right: .5em;
+                color: #888
+            }
+        </style>
+        <?php
     }
 
     public function application_javascript() {
@@ -47,13 +59,12 @@ class notepad extends application {
             $file_content = "Notepad 1.1 v1.1-class system added.";
         }
         ?>
-        <pre><code><?= htmlspecialchars($file_content); ?></code></pre>   
-            <?php
-        }
-
-        public function draw_application_toolbar() {
-            echo $this->file;
-        }
-
+        <pre><code><?= htmlspecialchars($file_content,ENT_QUOTES); ?></code></pre>   
+        <?php
     }
-    
+
+    public function draw_application_toolbar() {
+        echo $this->file;
+    }
+
+}
