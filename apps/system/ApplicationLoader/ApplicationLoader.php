@@ -15,7 +15,7 @@ function shutdown() {
         $UI = new UI_manager();
         
         $error_dialog = new dialog(3,$window_id);
-        $UI->draw_window($error_dialog);  
+        $UI->draw_window($error_dialog,$theme);  
     } 
 }
 
@@ -36,7 +36,7 @@ $app_path = filter_input(INPUT_POST, "app_path", FILTER_DEFAULT);
 
 $application = $UI->load_app($app_path, $app_name, $window_id, $file);
 if (isset($application)) {
-    $UI->draw_window($application);
+    $UI->draw_window($application,$theme);
 } else {
     echo 'aplicationloader.php error application not defined';
 }

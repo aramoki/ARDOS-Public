@@ -1,10 +1,5 @@
 <?php
 class UI_manager {
-
-    function __construct() {
-        
-    }
-
     public function load_app($app_path, $app_file_name, $window_id, $file) {
         if (!class_exists($app_file_name)) {
             include ABSPATH.$app_path . '/' . $app_file_name . '.php';
@@ -23,7 +18,7 @@ class UI_manager {
     }
     
 
-    public function draw_icons($icons, $open_new_window = 1, $window_id = null) {
+    public function draw_icons($icons,$theme, $open_new_window = 1, $window_id = null) {
         $data = '';
         if ($icons == null) {
             return null;
@@ -48,27 +43,26 @@ class UI_manager {
                     $file_info = 'Application';
                 } else {                                                                        //v---- buraya resetten null gelirse / koymuyoruz
                     $fdir = (($is_folder_shortcut) ? $_SERVER["DOCUMENT_ROOT"].ABSDIR.'/'. reset((explode('.', $icon))) : $full_path);
-                    $ext_image = ABSDIR.'/lib/images/filetypes/folder.png';
+                    $ext_image = $theme->themedir.'/images/filetypes/folder.png';
                     $command = (($open_new_window == 1) ? 'open_window(event,\'filemanager\',\'apps/filemanager\',\'' . $fdir . '\')' : 'refresh_window(event,\'' . $fdir . '\',\'' . $window_id . '\')' );
                     $file_info = 'Folder';
                 }
             } else {
-                //hata burda iconlar icin
-                $ext_file = 'lib/images/filetypes/' . $extension . '.png';
-                $ext_image = (file_exists(ABSPATH.$ext_file)) ? $ext_file : 'lib/images/filetypes/file.png';
+                $ext_file = $theme->themedir.'/images/filetypes/' . $extension . '.png';
+                $ext_image = (file_exists(ABSPATH.$ext_file)) ? $ext_file : $theme->themedir.'/images/filetypes/file.png';
                 $command = 'filetry(event,\'' . $extension . '\',\'' . $full_path . '\')';
                 $fsize = filesize($icons['path'].'/'.$icon);
                 $file_info = (($fsize / 1024 > 1024)?round($fsize / (1024 * 1024) ).' MB':round($fsize / (1024)).' KB') ;
             }
-            $scut_icon = '<img class="shortcut" src="lib/images/scut.png">';
+            $scut_icon = '<img class="shortcut" src="'.$theme->themedir.'/images/scut.png">';
 
             $vowels = array(".dir", ".app");
             $icon_name = str_replace($vowels, '', $icon);
             $data .=
                     '<div id="' . $icon . '" class="icon draggable" ondblclick="' . $command . '" style="-webkit-animation-delay:'.($animation_delay++/(2*$animation_speed)).'s;">
-                <p class="icon">' . (($is_app_shortcut || $is_folder_shortcut) ? $scut_icon : '') . '<img src="' . ((strlen($icon_name) > 0) ? $ext_image : 'lib/images/filetypes/root.png') . '"></p>
+                <p class="icon">' . (($is_app_shortcut || $is_folder_shortcut) ? $scut_icon : '') . '<img src="' . ((strlen($icon_name) > 0) ? $ext_image : $theme->themedir.'/images/filetypes/root.png') . '"></p>
                 <p class="name"><span class="nameselective">' . ((strlen($icon_name) > 0) ? $icon_name : 'root') . '</span><br>
-                    <span class="nameinfo">' . $file_info . '<span></p>
+                    <span class="nameinfo">'.$file_info . '<span></p>
             </div>';
         }
         
@@ -82,7 +76,7 @@ class UI_manager {
         
     }
     
-    public function draw_window($application) {
+    public function draw_window($application,$theme) {
         ?>
         <script>feature_draggable();</script>
         <?= $application->application_javascript(); ?>
@@ -100,13 +94,13 @@ class UI_manager {
                     </div>
                     <div class="cell windowsactions">
                         <a href="#" onclick="close_window(event,<?= $application->window_id ?>)">
-                            <img src="lib/images/green.png">
+                            <img src="<?=$theme->themedir?>/images/green.png">
                         </a>
                         <a href="#" onclick="minimize_window(event,<?= $application->window_id ?>)">
-                            <img src="lib/images/yellow.png">
+                            <img src="<?=$theme->themedir?>/images/yellow.png">
                         </a>
                         <a href="#" onclick="close_window(event,<?= $application->window_id ?>)">
-                            <img src="lib/images/close.png">
+                            <img src="<?=$theme->themedir?>/images/close.png">
                         </a>
                     </div>
                 </div>

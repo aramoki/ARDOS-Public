@@ -16,4 +16,4 @@ $UI = new UI_manager($filereader);
 $icons = $filereader->list_dir($directory);
 //print_r($icons);
 
-echo $UI->draw_icons($icons, 0 , $window_id);
+echo $UI->draw_icons($icons,$theme, 0 , $window_id);

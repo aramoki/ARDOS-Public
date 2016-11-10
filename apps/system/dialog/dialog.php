@@ -57,6 +57,24 @@ class dialog extends application {
                 $this->error_message .= 'User Not Authorized<br>';
                 $this->error_message .= 'use <a href="#" onclick="open_app(event,\'apps/system/logon\')" >logon application</a> to login system'.'<br>';
                 break;
+            case 5:
+                $this->icon = 'warning.png';
+                $this->image = 'user.png';
+                $this->error_type = 'User not found:';
+                $this->error_message .= 'Given informations are not match<br>';
+                break;
+            case 6:
+                $this->icon = 'error.png';
+                $this->image = 'fatal.png';
+                $this->error_type = 'Error:';
+                $this->error_message .= 'sql query error<br>';
+                break;
+            case 7:
+                $this->icon = 'warning.png';
+                $this->image = 'user.png';
+                $this->error_type = 'Fields are empty:';
+                $this->error_message .= 'please fill the blanks<br>';
+                break;
             case 404:
                 $ref = htmlspecialchars($_SERVER['HTTP_REFERER']);
                 $this->icon = 'warning.png';

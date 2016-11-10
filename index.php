@@ -38,15 +38,7 @@ mohorame[at ] gmail [dot ] com
         </div>--->
         <?php
         include 'kernel.php';
-
-        $filereader = new FIO();
-        $icons = $filereader->list_dir_sorted(ABSPATH . 'desktop');
-
-        $theme = new ThemeManager();
-        $theme->set_theme();
-
-        $desktop = new desktop();
-        $desktop->draw_desktop($icons);
+        (new desktop($theme))->draw_desktop((new FIO())->list_dir_sorted(ABSPATH . 'desktop'));
         ?>
 
     </body>

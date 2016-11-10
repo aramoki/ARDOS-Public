@@ -1,10 +1,15 @@
 <?php
 
 class desktop {
-
+    private $theme;
+    public function __construct($theme) {
+        $this->theme = $theme;
+        $this->theme->set_theme();
+    }
+    
     function draw_desktop($icons) {
+        global $theme;
         $UI = new UI_manager();
-
         $username = filter_input(INPUT_COOKIE, "username", FILTER_DEFAULT);
         ?>
 
@@ -18,7 +23,7 @@ class desktop {
         </ul>
 
         <div class="desktop" style="z-index: 0;">
-            <?= $UI->draw_icons($icons); ?>    
+            <?= $UI->draw_icons($icons,$theme); ?>
         </div>
         <script>
             feature_draggable();
@@ -28,7 +33,7 @@ class desktop {
            --->
         <div class="tasks">
             <li data-action="open" class="showhidetasks" onclick="showhidetasks(event)">
-                <img src="lib/images/tasks.png"><p class="info">Hide / Show Tasks</p>
+                <img src="<?=$theme->themedir?>/images/tasks.png"><p class="info">Hide / Show Tasks</p>
             </li>
 
             <div class="taskscontainer">
@@ -36,7 +41,7 @@ class desktop {
         </div>
 
         <div class="loading" style="z-index: 1000;">
-            <img src="lib/images/loading.gif">
+            <img src="<?=$theme->themedir?>/images/loading.gif">
             <!---<p class="progress">&nbsp;</p>-->
         </div>
 
@@ -62,7 +67,7 @@ class desktop {
                         ~<?= $username ?>
                     </p>
                     <p class="umenu">
-                        <a href="#"><img src="lib/images/bal.png"> 12</a>
+                        <a href="#"><img src="<?=$theme->themedir?>/images/bal.png"> 12</a>
                     </p>
                 </div>
                 <div class="cell avatar" onclick="sliderusermenu(event)">
@@ -75,16 +80,18 @@ class desktop {
         <div class="usermenu">
             <ul>
                 <li><a href="#">Contributions</a></li>
-                <li><a href="#">User Profile</a></li>
-                <li><a href="#">Preferences</a></li>
-                <li><a href="#">logout</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Creator</a></li>
+                <li><a href="#" onclick="open_app(event,'apps/system/logon')">Logon</a></li>
             </ul>
         </div>
         
 
 
         <div class="footer">
-            ardos v1.3.00 BETA still beta :(<br>
+            <?= str_replace(ABSPATH,'',$this->theme->themedir) ?><br>
+            <?=print_r($_COOKIE).'--'?>
+            ardos v1.3.00  beta<br>
             aramok.net &copy; 2007 - 2016<br>
             <?= ABSPATH . '::' . ABSDIR; ?>
         </div>

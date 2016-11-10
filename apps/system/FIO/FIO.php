@@ -55,12 +55,13 @@ class FIO {
         }
     }
      public static function rename_file($file,$newfilename){
-        if(file_exists($file)){;
+        if(file_exists($file)){
             if(@rename($file,dirname($file).'/'.$newfilename)){
                 echo 'success';
                 
             }else{
                 echo 'failure';
+                
             }
         }
     }
