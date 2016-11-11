@@ -25,11 +25,16 @@
             ga('create', 'UA-31097804-1', 'auto');
             ga('send', 'pageview');
 
+            /*$(document).ready(function () {
+             bootloader();
+             });*/
         </script>
     </head>
+
     <body>
+        hi!
         <?php
-        include 'kernel.php';
+        require_once 'kernel.php';
         (new desktop($theme))->draw_desktop((new FIO())->list_dir_sorted(ABSPATH . 'desktop'));
         ?>
     </body>

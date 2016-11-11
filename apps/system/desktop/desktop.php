@@ -1,11 +1,13 @@
 <?php
 
-class desktop {
+class desktop{
     private $theme;
     public function __construct($theme) {
         $this->theme = $theme;
         $this->theme->set_theme();
     }
+    
+    
     
     function draw_desktop($icons) {
         global $theme;
@@ -60,23 +62,20 @@ class desktop {
             <img class="rotate" src="lib/drawer.png" onclick="sliderusermenu(event)">
         </div>--->
 
+        
+        
+        
+        
         <div class="user table">
             <div class="row">
                 <div class="cell">
                     <p class="username">
                         ~<?= $username ?>
                     </p>
-                    <p class="umenu">
-                        <a href="#"><img src="<?=$theme->themedir?>/images/bal.png"> 12</a>
-                    </p>
                 </div>
-                <div class="cell avatar" onclick="sliderusermenu(event)">
-                    <img src="lib/useravatar/test.jpeg">
-                </div>
+                
             </div>
         </div>
-
-        
         <div class="usermenu">
             <ul>
                 <li><a href="#">Contributions</a></li>
@@ -85,6 +84,10 @@ class desktop {
                 <li><a href="#" onclick="open_app(event,'apps/system/logon')">Logon</a></li>
             </ul>
         </div>
+        
+        
+        
+        
         
 
 
