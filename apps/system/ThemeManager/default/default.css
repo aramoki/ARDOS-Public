@@ -88,15 +88,24 @@ div.desktop{
     padding-bottom:30px;
     box-sizing: border-box;
     background-color:#fff;
-    background-image:url('../../../../lib/wallpaper/back1.jpg');
+    background-image:url('../../../../lib/wallpaper/back2.png');
 
+    
+    background-color:#363143;
     background-position-y: center;
-    background-repeat: repeat-x;
+    background-position-x: center;/*deplete*/
+    background-repeat: no-repeat;
     /*background-size: auto 100%;*/
 
-    -webkit-animation: desktopslide 3s ease forwards; 
+    /*-webkit-animation: desktopslide 3s ease forwards; */
     /*-webkit-animation: dimm 10s ease forwards; */
     /*animation-iteration-count:infinite;*/
+}
+div.desktop > div.icon > p.name{
+    color:white;
+}
+div.desktop > div.selectedicon> p.name >span.nameselective{
+    background-color:#5b2008;
 }
 
 
@@ -148,7 +157,6 @@ div.icon p.name span.nameinfo{
 div.selectedicon{overflow: visible;z-index: 1;}
 div.selectedicon p.name span.nameselective{
     background-color:#ddd;
-    outline:1px dashed #ddd;
 }
 div.selectedicon p.icon {
     -webkit-filter: grayscale(100%);
@@ -529,8 +537,8 @@ div.footer{
     position:fixed;
     right:10px;
     bottom:10px;
-    color:#666;
-    text-shadow:1px 1px 0px #ddd;
+    color:rgba(255,255,255,1);
+    text-shadow:1px 1px 0px rgba(12,12,12,0.5);
     font-size: 12px;
     text-align: right;
 }

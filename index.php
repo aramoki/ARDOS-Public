@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<!--
-aramok.net openScript v1.2.1
-for more information 
-mohorame[at ] gmail [dot ] com
--->
 <html>
     <head>
         <title>Aramok's Workspace</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="lib/favicon.ico" />
         <script src="lib/jquery.js"></script>
         <script src="lib/jquery-ui.js"></script>
         <script src="lib/aramok.js"></script>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -33,16 +28,11 @@ mohorame[at ] gmail [dot ] com
         </script>
     </head>
     <body>
-        <!---<div >
-            Aramok's Personal workspace , all is freeware here you can download  , copy and use all of em.
-        </div>--->
         <?php
         include 'kernel.php';
         (new desktop($theme))->draw_desktop((new FIO())->list_dir_sorted(ABSPATH . 'desktop'));
         ?>
-
     </body>
-
 </html>
 
 

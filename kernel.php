@@ -17,5 +17,5 @@ include ABSPATH.'apps/system/FIO/FIO.php';
 
 date_default_timezone_set('Europe/Istanbul');
 //global theme definition
-$theme = new ThemeManager('macosx');
+$theme = new ThemeManager('default');
 ?>

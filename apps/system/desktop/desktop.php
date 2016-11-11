@@ -89,11 +89,14 @@ class desktop {
 
 
         <div class="footer">
-            <?= str_replace(ABSPATH,'',$this->theme->themedir) ?><br>
-            <?=print_r($_COOKIE).'--'?>
-            ardos v1.3.00  beta<br>
+            <div style="text-align:left;">
+            <b>theme:</b><?= str_replace(ABSPATH,'',$this->theme->themedir) ?><br>
+            <b>cookie:</b><?=print_r($_COOKIE).'--'?><br>
+            <b>paths:</b><?= ABSPATH . '::' . ABSDIR; ?><br>
+            </div>
+            { ardos 1.0 beta }<br>
             aramok.net &copy; 2007 - 2016<br>
-            <?= ABSPATH . '::' . ABSDIR; ?>
+            
         </div>
 
         <?php
