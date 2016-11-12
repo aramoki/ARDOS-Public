@@ -37,8 +37,6 @@ class aboutme extends application {
             }
             div.content div.roundpict{
                 width:150px;
-                border:1px solid #cecece;
-                background-image: url('https://s-media-cache-ak0.pinimg.com/236x/4d/d0/1d/4dd01de5a8c0cae88236c09c96e6b858.jpg');
             }
             div.content div.roundpict img{
                 border-radius:5px;
@@ -62,22 +60,27 @@ class aboutme extends application {
                     <img  src="<?=$imagedir?>/S.gif">
                 </div>
                 <div class="cell" style="text-align: left;border-left:1px solid #eee;">
-                    <h2>Sencer Aramok</h2> <br>
+                    <h2>Aramok</h2> <br>
                     Electronics Engineer<br>
-                    <small>sencer@aramok.net</small>
+                    <small>nrec@aramok.net</small>
                     <hr>
-                    <b>Education:</b><br>
+                    <!---<b>Education:</b><br>
                     Graduated from Marmara University<br>
                     <small>Continue master degree...</small><br>
-                    <br>
+                    <br>-->
                     <b>Additional Projects:</b><br>
-                    This web page... <small> was a dream , to real @2007</small><br>
+                    ardos... <small> always wanted to have something simple like this </small><br>
                     Unique kernel... <small> just a little step after B-loader </small><br>
-                    <small> @verilog {css} .php. +js  *c  jaVa  ;asm  ./unix </small>
+                    GL Works <small>Funn part of mathmatic ^_^</small><br>
+                    8 to 16 <small>cute sisc to risc , much more fun</small><br>
+                    Mitma <small>Canvas of davinci</small><br>
+                    esurrive<small> well , consider this one is a pixel art</small>
+                    <br><br><b>Hobbies:</b><br>
+                    <small> @verilog {css} .php. +js rb *c&pp d- jaVa ;asm ./unix cas etc</small><br>
+                    <small> Real brush art and  PIXEL Art</small><br>
+                    <small> Pink Head Night Elf Death Knight , pushing ladder since 2007</small><br>
                     <br><hr>
-                    <a href="#" class="button" ><img src="<?=$imagedir?>/face.png"> Facebook</a><br>
-                    <a href="#" class="button" ><img src="<?=$imagedir?>/in.png"> Linkedin</a><br>
-                    <a href="#" class="button" ><img src="<?=$imagedir?>/git.png"> GitHub</a><br>
+                    <a href="https://github.com/aramoki" target="_blank" class="button" ><img src="<?=$imagedir?>/git.png"> GitHub</a><br>
                 </div>
             </div>
         </div>

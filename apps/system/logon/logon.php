@@ -6,7 +6,7 @@ class logon extends application {
     const author = 'aramok';
     const version = '1.0';
     const width = 400;
-    const height = 300;
+    const height = 320;
     const info = '';
 
     public function __construct($app_file_name, $window_id, $file) {
@@ -269,13 +269,6 @@ class logon extends application {
                         $user = $result->fetch_array();
                         ?>
 
-
-
-
-
-
-
-
                         <div class="tab _profile">
                             <div class="sub user<?= $this->window_id ?>">
                                 <form class="userprofile<?= $this->window_id ?>" method="post">
@@ -306,7 +299,7 @@ class logon extends application {
                                 </form>
                             </div>
 
-                            <div class="sub">
+                            <!---<div class="sub">
                                 <span>
                                     <p>Avatar:</p>
                                     <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
@@ -314,7 +307,7 @@ class logon extends application {
                                 <span class=""><p>&nbsp;</p>
                                     <a  href="#" class="button"> Update </a>
                                 </span>
-                            </div>
+                            </div> --->
                         </div>
 
 
@@ -345,20 +338,20 @@ class logon extends application {
                             <div class="sub">
                                 <span>
                                     <p>Username:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="text" class="input" value="<?= $user['username'] ?>">
+                                    <input disabled  type="text" class="input" value="<?= $user['username'] ?>">
                                 </span>
                                 <span class="">
-                                    <p>&nbsp;</p><a  href="#" class="button"> Change Username </a>
+                                    <p>&nbsp;</p><a  href="#" class="button" disabled> Change Username </a>
                                 </span>
                             </div>
 
                             <div class="sub">
                                 <span>
                                     <p>&nbsp;</p>
-                                    <label><input type="checkbox"> im sure , delete my account</label>
+                                    <label><input type="checkbox" disabled> im sure , delete my account</label>
                                 </span>
                                 <span class="">
-                                    <p>&nbsp;</p><a  href="#" class="button"> Delete Permanently</a>
+                                    <p>&nbsp;</p><a  href="#" class="button" > Delete Permanently</a>
                                 </span>
                             </div>
                         </div>
@@ -369,21 +362,14 @@ class logon extends application {
                         <div class="tab _preferences">
                             <div class="sub">
                                 <span>
-                                    <label><input type="checkbox"> Put me out of data rest</label>
+                                    <label><input type="checkbox" disabled> Disable animations</label>
                                 </span>
                                 <span>
-                                    <label><input type="checkbox"> Rest information need</label>
+                                    <label><input type="checkbox" disabled> Disable animated background</label>
                                 </span>
                                 <span>
-                                    <label><input type="checkbox"> i dont know what to do whit this</label>
+                                    <label><input type="checkbox" disabled> Minimize memory usage</label>
                                 </span>
-                                <span>
-                                    <label><input type="checkbox"> let thes hor much it can go further and we know it better</label>
-                                </span>
-                                <span>
-                                    <label><input type="checkbox"> some little cases with <small> ittle information</small></label>
-                                </span>
-                                <center>
                                     <span class="">
                                         <a  href="#" class="button"> Update </a>
                                     </span>
@@ -394,8 +380,8 @@ class logon extends application {
                         <div class="tab _logins">
 
                             <div class="sub">
-                                <span class=""><p>Logins:</p>
-                                    You are logged in those locations
+                                <span class="">Logins:<br>
+                                    <small><?=$_SERVER['HTTP_USER_AGENT']?></small>
                                 </span>
                                 <span class=""><p>&nbsp;</p>
                                     <a onclick="logout<?= $this->window_id ?>(event);" href="#" class="button"> Logout </a>
@@ -434,7 +420,7 @@ class logon extends application {
                             </span>
                             <span>
                                 <p>&nbsp;</p>
-                                <a href="#" class="lls">Forgot password</a> | <a href="#" class="lls" onclick="open_window(event,'register', 'apps/system/logon');">Register</a>
+                                <s><a href="#" class="lls">Forgot password</a></s> | <s><a href="#" class="lls" >Register</a></s>
                             </span>
                         </div>
                         <?php

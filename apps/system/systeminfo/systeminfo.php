@@ -54,7 +54,7 @@ class systeminfo extends application {
                 <div class="cell systeminfo-cell">
                     <b>Host:</b><br>
                     <?= $_SERVER['HTTP_HOST'] ?>
-                    <br><?= $_SERVER['DOCUMENT_ROOT'] ?><br><br>
+                    <br>
                     <b>Browser:</b><br>
                     <?= $_SERVER['HTTP_USER_AGENT'] ?><br><br>
                     <b>Server Software:</b><br>

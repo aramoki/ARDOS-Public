@@ -58,9 +58,6 @@ class UI_manager {
 
             $vowels = array(".dir", ".app");
             $icon_name = str_replace($vowels, '', $icon);
-            if($is_app_shortcut){
-               $icon_name = end(explode('-',$icon_name)) ;
-            }
             $data .=
                     '<div id="' . $icon . '" class="icon draggable" ondblclick="' . $command . '" style="-webkit-animation-delay:'.($animation_delay++/(2*$animation_speed)).'s;">
                 <p class="icon">' . (($is_app_shortcut || $is_folder_shortcut) ? $scut_icon : '') . '<img src="' . ((strlen($icon_name) > 0) ? $ext_image : $theme->themedir.'/images/filetypes/root.png') . '"></p>
