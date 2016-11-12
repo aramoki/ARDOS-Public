@@ -1,1 +1,1 @@
-ErrorDocument 404 /lib/errorpage.php?error=404
+ErrorDocument 404 /aramok/errorpage.php?error=404

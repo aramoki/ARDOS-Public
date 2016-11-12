@@ -44,7 +44,7 @@ class logon extends application {
                 padding:10px 0px;
                 background-color:#f2f0f3;  
                 border-radius: 5px;
-                margin:10px 5px;
+                margin:0px 5px 10px 5px;
             }
             div.loginbox span{
                 display:block;
@@ -133,6 +133,121 @@ class logon extends application {
                 $('.' + tab).show();
             }
 
+
+            function update_profile<?= $this->window_id ?>(form) {
+                $.ajax({
+                    url: '<?= $jsdir ?>/update.php',
+                    type: 'post',
+                    data: $('.'+form).serialize(),
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+
+                        // Upload progress
+                        xhr.upload.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                //Do something with upload progress
+                                //console.log(percentComplete);
+                                $("html").css('cursor', 'wait');
+                                $(".loading").show();
+                            }
+                        }, false);
+
+                        // Download progress
+                        xhr.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                // Do something with download progress
+                                //console.log(percentComplete);
+                                $("html").css('cursor', 'wait');
+                                $(".loading").show();
+                            }
+                        }, false);
+
+
+                        //Done progress
+                        xhr.addEventListener("load", function (evt) {
+                            $("html").css('cursor', 'auto');
+                            $(".loading").hide();
+                        }, false);
+
+
+                        return xhr;
+                    },
+                    success: function (data, status) {
+                        //alert(data);
+                    },
+                    error: function (xhr, desc, err) {
+                        alert("Details: " + desc + "\nError:" + err + "--" + xhr);
+
+                    }
+                }); // end ajax call
+
+            }
+            
+             function change_password<?= $this->window_id ?>(form) {
+                $.ajax({
+                    url: '<?= $jsdir ?>/changepassword.php',
+                    type: 'post',
+                    data: $('.'+form).serialize(),
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+
+                        // Upload progress
+                        xhr.upload.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                //Do something with upload progress
+                                //console.log(percentComplete);
+                                $("html").css('cursor', 'wait');
+                                $(".loading").show();
+                            }
+                        }, false);
+
+                        // Download progress
+                        xhr.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                // Do something with download progress
+                                //console.log(percentComplete);
+                                $("html").css('cursor', 'wait');
+                                $(".loading").show();
+                            }
+                        }, false);
+
+
+                        //Done progress
+                        xhr.addEventListener("load", function (evt) {
+                            $("html").css('cursor', 'auto');
+                            $(".loading").hide();
+                        }, false);
+
+
+                        return xhr;
+                    },
+                    success: function (data, status) {
+                        switch (data) {
+                            case '1':
+                                break;
+                            case '3'://user not found
+                                open_app(event, 'apps/system/dialog', 5);
+                                break;
+                            case '2'://sql query error
+                                open_app(event, 'apps/system/dialog', 6);
+                                break;
+                            case '0'://fields are empty
+                                open_app(event, 'apps/system/dialog', 7);
+                                break;
+                        }
+                    },
+                    error: function (xhr, desc, err) {
+                        alert("Details: " + desc + "\nError:" + err + "--" + xhr);
+
+                    }
+                }); // end ajax call
+
+            }
+
             $('._profile').show();
         </script>
         <?php
@@ -146,6 +261,12 @@ class logon extends application {
                 <div class="cell">
                     <?php
                     if (isset($username_cookie)) {
+
+
+                        include"../database/mysql.php";
+                        $sql = "SELECT * from users WHERE username='" . $username_cookie . "'";
+                        $result = $mysqli->query($sql);
+                        $user = $result->fetch_array();
                         ?>
 
 
@@ -153,31 +274,36 @@ class logon extends application {
 
 
 
+
+
                         <div class="tab _profile">
-                            <div class="sub">
+                            <div class="sub user<?= $this->window_id ?>">
+                                <form class="userprofile<?= $this->window_id ?>" method="post">
+                                   
                                 <span>
                                     <p>Name:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="name" type="text" class="input" value="<?= $user['name'] ?>">
                                 </span>
                                 <span>
                                     <p>Email:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="email" type="text" class="input" value="<?= $user['email'] ?>">
                                 </span>
                                 <span>
                                     <p>URL:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="url" type="text" class="input" value="<?= $user['url'] ?>">
                                 </span>
                                 <span>
                                     <p>Location:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="location" type="text" class="input" value="<?= $user['location'] ?>">
                                 </span>
                                 <span>
                                     <p>Company:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="company" type="text" class="input" value="<?= $user['company'] ?>">
                                 </span>
                                 <span class=""><p>&nbsp;</p>
-                                    <a  href="#" class="button"> Update </a>
+                                    <a  href="#" class="button" onclick="update_profile<?= $this->window_id ?>('userprofile<?= $this->window_id ?>')"> Update </a>
                                 </span>
+                                </form>
                             </div>
 
                             <div class="sub">
@@ -199,29 +325,30 @@ class logon extends application {
                         <div class="tab _account">
 
                             <div class="sub">
+                                <form action="#" method="post" class="changepassword<?= $this->window_id ?>">
                                 <span>
                                     <p>Old Password:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="password" type="password" class="input">
                                 </span>
                                 <span>
                                     <p>New Password:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="newpassword1" type="password" class="input">
                                 </span>
                                 <span>
                                     <p>Retry:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input name="newpassword2" type="password" class="input">
                                 </span>
                                 <span class="">
-                                    <p>&nbsp;</p><a  href="#" class="button"> Change Password </a>
+                                    <p>&nbsp;</p><a  href="#" class="button" onclick="change_password<?= $this->window_id ?>('changepassword<?= $this->window_id ?>')"> Change Password </a>
                                 </span>
                             </div>
                             <div class="sub">
                                 <span>
                                     <p>Username:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                    <input id="aramok-password<?= $this->window_id ?>" type="text" class="input" value="<?= $user['username'] ?>">
                                 </span>
                                 <span class="">
-                                    <p>&nbsp;</p><a  href="#" class="button"> Change Password </a>
+                                    <p>&nbsp;</p><a  href="#" class="button"> Change Username </a>
                                 </span>
                             </div>
 
@@ -307,7 +434,7 @@ class logon extends application {
                             </span>
                             <span>
                                 <p>&nbsp;</p>
-                                <a href="#" class="lls">Forgot password</a> | <a href="#" class="lls">Register</a>
+                                <a href="#" class="lls">Forgot password</a> | <a href="#" class="lls" onclick="open_window(event,'register', 'apps/system/logon');">Register</a>
                             </span>
                         </div>
                         <?php

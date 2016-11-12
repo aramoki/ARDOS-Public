@@ -1,5 +1,5 @@
 <?php
-include '../index.php';
+include 'index.php';
 $error = filter_input(INPUT_GET, 'error', FILTER_SANITIZE_SPECIAL_CHARS);
 ?>
 <script>

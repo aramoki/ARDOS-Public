@@ -72,9 +72,30 @@ class dialog extends application {
             case 7:
                 $this->icon = 'warning.png';
                 $this->image = 'user.png';
-                $this->error_type = 'Fields are empty:';
-                $this->error_message .= 'please fill the blanks<br>';
+                $this->error_type = 'Fields are not proper:';
+                $this->error_message .= 'please fill the blanks properly<br>';
                 break;
+            case 8:
+                $this->icon = 'warning.png';
+                $this->image = 'user.png';
+                $this->error_type = 'User exist';
+                $this->error_message .= 'username or mail address allready registered<br>';
+                break;
+            case 9:
+                $this->icon = 'warning.png';
+                $this->image = 'user.png';
+                $this->error_type = 'User Aggrement';
+                $this->error_message .= 'you must accept user aggrement to register<br>';
+                break;
+            
+            case 100:
+                $ref = htmlspecialchars($_SERVER['HTTP_REFERER']);
+                $this->icon = 'warning.png';
+                $this->image = 'link.png';
+                $this->error_type = 'Error: hotlink protection';
+                $this->error_message .= 'Hotlink is not enabled you can visit <a href="http://aramok.net">Main page</a> and seek for the file you looking for';
+                break;
+
             case 404:
                 $ref = htmlspecialchars($_SERVER['HTTP_REFERER']);
                 $this->icon = 'warning.png';
