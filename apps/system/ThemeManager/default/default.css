@@ -188,6 +188,7 @@ div.window{
     left:0px;
     background-color:white;
     box-shadow:0px 0px 7px #555;
+    border-radius: 4px;
 }
 
 div.window div.titlebar{
@@ -195,6 +196,7 @@ div.window div.titlebar{
     color:#fff;
     font-size:13px;
     padding:0px 0px 3px 0px;
+    border-radius: 4px 4px 0px 0px;
 
 }
 div.window div.titlebar div.appicon{
@@ -233,6 +235,7 @@ div.window div.titlebar div.windowsactions a:active{
     filter: brightness(90%);
 }
 div.window div.content{
+    border-radius: 0px 0px 4px 4px ;
     overflow: auto;
     clear: both;
 }
@@ -302,6 +305,7 @@ div.toolbar{
     background-color:#f1f1f1;
     /*border-bottom:1px solid #ccc;*/
     border-top:1px solid #666;
+    
 }
 div.toolbar div.cell{
     vertical-align: middle;
@@ -311,9 +315,7 @@ div.toolbar div.cell{
 
 
 div.toolbar div.dirpath{
-    position:relative;
     padding:0px 4px;
-    display:inline-block;
 }
 div.toolbar div.dirpath input[type="text"].input_dirpath{
     padding:4px 5px;
@@ -557,45 +559,26 @@ div.user{
     padding:4px 3px;
     display:none;
 }
-div.user p{padding:3px 8px;text-align: right;display:block;width:150px;}
 div.user p.username{
+    padding:3px 8px;
+    text-align: right;
+    display:block;
+    cursor:pointer;
     font-size:13px;
-    text-shadow:1px 1px 0px #ccc;
+    text-shadow:1px 1px 0px #eee;
+    border-radius:4px;
 }
-div.user p.umenu{font-size:10px;}
-div.user p.umenu a{
-    text-decoration:none;
-    color:#666;
-    padding:2px 4px;
+div.user p.username:hover{
+    color:orangered;
 }
-div.user p.umenu a img{vertical-align:middle;}
-div.user p.umenu a:hover{
-    background-color:white;
-    border-radius:3px;
-}
-div.user div.avatar{vertical-align: middle;}
-div.user div.avatar img{
-    border-radius: 5px;
-    border:1px solid #666;
-}
-div.user img.rotate{
-    float:right;
-    opacity:0.5;
-    transition: all 1s ease;
-}
-div.rotateimg img.rotate{
-    -ms-transform: rotate(-180deg); /* IE 9 */
-    -webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
-    transform: rotate(-180deg);
-}
-div.user:hover img{opacity: 1;}
+
 
 div.usermenu{
     background-color:#eee;
     color:#666;
     border:1px solid #999;
     position:fixed;
-    top:60px;
+    top:35px;
     right:3px;
     display: none;
     vertical-align: top;
@@ -775,4 +758,5 @@ span.error{
     background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABHSURBVHjajM7RCQAgCATQo8Edyxl0qgv7CArqFAQPHipIQnVEcEBUZtLdITeZGWtuoSe8UeUWqtxCx+kf2lCh9WMHVZ4CDADj7xFC8l50hgAAAABJRU5ErkJggg==');
     background-color: #fff;
     background-repeat: no-repeat;
+    border-radius: 0px 0px 4px 4px 
 }

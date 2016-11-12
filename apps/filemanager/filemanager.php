@@ -50,6 +50,13 @@ class filemanager extends application {
             div.fmright{
                 display:inline-block;
             }
+            
+            div.dirn_holder{
+                overflow-x: auto;
+                display:inline;
+                box-sizing: border-box;
+                
+            }
         </style>
 
         <?php
@@ -66,7 +73,7 @@ class filemanager extends application {
             function uplevel_dir(event, window_id) {
                 var path = $('#window' + window_id + ' .inpdirpath').val();
                 var uplevel = path.substring(0, path.lastIndexOf("/"));
-                var username = readCookie_depleted('username');
+                /*var username = readCookie_depleted('username');
                 if (username === null) {
                     var level = ((path + '/').replace('<?= ABSPATH ?>', '')).split('/').length;
                     if (level === 1) {
@@ -76,7 +83,7 @@ class filemanager extends application {
                 } else {
                     //giris yapilmissa izin ver her yere
                 }
-
+                */
                 refresh_window(event, uplevel, window_id);
             }
 
@@ -123,31 +130,22 @@ class filemanager extends application {
 
                         return xhr;
                     },
-                    /*xhrFields: {
-                     onprogress: function (e) {
-                     if (e.lengthComputable) {
-                     var pct = (e.loaded / e.total) * 100;
-                     $("html").css('cursor', 'wait');
-                     $(".loading").show();
-                     //$(".loading .progress").css('width', pct + '%');
-                     }
-                     }
-                     },*/
                     success: function (data, status) {
                         //$("html").css('cursor', 'auto');
                         //$(".loading").hide();
                         $('#window' + window_id + ' .file-manager-content').html(data);
                         $('#window' + window_id + ' .inpdirpath').val(dir);
                         var dirs;
-                        var username = readCookie_depleted('username');
+                        //var username = readCookie_depleted('username');
 
-                        if (username === null) {
+                        /*if (username === null) {
                             dirs = ((dir + '/').replace('<?= ABSPATH ?>', 'Root/')).split('/');
                         } else {
                             dirs = dir.split("/");
-                        }
+                        }*/
+                        dirs = ((dir + '/').replace('<?= ABSPATH ?>', 'root/')).split('/');
 
-
+                        
                         $('#window' + window_id + ' .dirpath .dirn_holder').html('');
                         dirs.forEach(function (dir) {
                             if (dir.length > 0) {
@@ -191,17 +189,19 @@ class filemanager extends application {
             ?>
         </div>
 
-        <div class="dirpath">
+        
+        <div class="fmright dirpath">
             <input class="inpdirpath" type="hidden" value="<?= (isset($this->file)) ? $this->file : "/" ?>">
-            <div class="dirn_holder" style="overflow-x: auto;">
+            <div class="dirn_holder" >
                 <?php
                 $dirn = (isset($this->file)) ? $this->file : "/";
 
-                if (isset($username)) {
+                /*if (isset($username)) {
                     $dirs = explode('/', $dirn);
                 } else {
                     $dirs = explode('/', str_replace(ABSPATH, 'Root/', $dirn));
-                }
+                }*/
+                $dirs = explode('/', str_replace(ABSPATH, 'root/', $dirn));
 
 
                 foreach ($dirs as $dir) {

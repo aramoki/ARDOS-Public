@@ -4,10 +4,11 @@ $cookie_days = filter_input(INPUT_POST, "days", FILTER_DEFAULT);
 $username = strip_tags($mysqli->real_escape_string(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS)));
 $password = strip_tags($mysqli->real_escape_string(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS)));
 
-$password_enc = hash('sha256', $password);
+$salt = 'aramokaramok..aramokaramok..aramokaramok..aramokaramok..';
+$password_enc = hash('sha256', $salt.$password);
 
 if ($username != "" && $password != "") {
-    $sql = "SELECT * from users WHERE (username='" . $username . "' or email='" . $username . "') and password='" .$password. "' ";
+    $sql = "SELECT * from users WHERE (username='" . $username . "' or email='" . $username . "') and password='" .$password_enc. "' ";
     $result = $mysqli->query($sql);
     if ($result) {
         $user_exist = $result->num_rows;

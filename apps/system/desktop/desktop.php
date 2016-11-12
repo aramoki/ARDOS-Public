@@ -65,17 +65,10 @@ class desktop{
         
         
         
-        
-        <div class="user table">
-            <div class="row">
-                <div class="cell">
-                    <p class="username">
+        <div class="user">
+        <p class="username" onclick="sliderusermenu(event)">
                         ~<?= $username ?>
-                    </p>
-                </div>
-                
-            </div>
-        </div>
+        </p>
         <div class="usermenu">
             <ul>
                 <li><a href="#">Contributions</a></li>
@@ -83,6 +76,7 @@ class desktop{
                 <li><a href="#">Creator</a></li>
                 <li><a href="#" onclick="open_app(event,'apps/system/logon')">Logon</a></li>
             </ul>
+        </div>
         </div>
         
         

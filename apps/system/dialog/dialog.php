@@ -55,7 +55,7 @@ class dialog extends application {
                 $this->image = 'key.png';
                 $this->error_type = 'Restricted:';
                 $this->error_message .= 'User Not Authorized<br>';
-                $this->error_message .= 'use <a href="#" onclick="open_app(event,\'apps/system/logon\')" >logon application</a> to login system'.'<br>';
+                $this->error_message .= 'use <a href="#" onclick="open_app(event,\'apps/system/logon\')" >logon application</a> to login system' . '<br>';
                 break;
             case 5:
                 $this->icon = 'warning.png';
@@ -80,7 +80,7 @@ class dialog extends application {
                 $this->icon = 'warning.png';
                 $this->image = '404.png';
                 $this->error_type = 'Error: Page not found';
-                $this->error_message .= '"'.$ref.'"<br><br>';
+                $this->error_message .= '"' . $ref . '"<br><br>';
                 $this->error_message .= 'You can visit the <a href="http://aramok.net">Main page</a> or you can get <a target="_blank" href="https://www.wikipedia.org/wiki/HTTP_404">more information</a> about this error';
                 break;
 
@@ -99,7 +99,16 @@ class dialog extends application {
     }
 
     public function application_javascript() {
-        
+        ?>
+        <script>
+            
+            /*$(document).ready(function () {
+                var audio = new Audio("lib/sounds/error.mp3");
+                audio.play();
+            });*/
+
+        </script>
+        <?php
     }
 
     public function draw_application_content() {
@@ -117,7 +126,7 @@ class dialog extends application {
             </div>
             <div class="row">
                 <div class="cell">
-                    &nbsp;
+                    &nbsp
                 </div>
                 <div class="cell">
                     <a href="#" class="button" onclick="close_window(event,<?= $this->window_id ?>);">Close</a>  

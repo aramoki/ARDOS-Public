@@ -7,6 +7,7 @@ class logon extends application {
     const version = '1.0';
     const width = 400;
     const height = 300;
+    const info = '';
 
     public function __construct($app_file_name, $window_id, $file) {
         $this->layout_type = 'layout_default';
@@ -33,11 +34,17 @@ class logon extends application {
             div.loginbox div.cell{
                 vertical-align: top;
             }
-            div.loginbox div.cell div.holder{
+            div.loginbox div.cell div.uholder{
                 overflow: hidden;
                 padding:10px 0px;
                 background-color:#ebebeb;  
                 border-radius: 3px;
+            }
+            div.loginbox div.cell div.sub{
+                padding:10px 0px;
+                background-color:#f2f0f3;  
+                border-radius: 5px;
+                margin:10px 5px;
             }
             div.loginbox span{
                 display:block;
@@ -49,7 +56,17 @@ class logon extends application {
                 text-align:right;
                 padding:10px 10px;
             }
-            
+            div.loginbox span p img{
+                vertical-align: top;
+            }
+            div.loginbox span a.lls{
+                text-decoration:none;
+                color:#4587ed;
+            }
+            div.loginbox span a.lls:hover{
+                color:orangered;
+            }
+
             div.tab{
                 display:none;
             }
@@ -57,11 +74,9 @@ class logon extends application {
                 padding:0px 5px;
             }
             div.tabs li.selected{
-                background-color:#ebebeb;
+                background-color:#dfdfdf;
             }
             div.tabs li{
-                 
-                border-radius: 3px 3px 0px 0px;
                 display:inline-block;
                 list-style-type: none;
                 padding:5px 8px;
@@ -104,28 +119,27 @@ class logon extends application {
                     }}); // end ajax call
             }
             function logout<?= $this->window_id ?>(event) {
-                event.preventDefault();
-
                 eraseCookie('username').success(
                         function (data) {
-                            check_user_login();
+                            $('.user').hide('slow');
                         });
 
                 close_window(event,<?= $this->window_id ?>);
             }
-            function selecttab(e,tab){
+            function selecttab(e, tab) {
                 $('.tabs li').removeClass('selected');
                 $(e.target).addClass('selected');
                 $('.tab').hide();
-                $('.'+tab).show();
+                $('.' + tab).show();
             }
-            
-            $('._informations').show();
+
+            $('._profile').show();
         </script>
         <?php
     }
 
     public function draw_application_content() {
+        $imagedir = str_replace($_SERVER["DOCUMENT_ROOT"], '', dirname(__FILE__));
         $username_cookie = filter_input(INPUT_COOKIE, "username", FILTER_DEFAULT);
         ?><div class="loginbox table">
             <div class="row">
@@ -133,29 +147,58 @@ class logon extends application {
                     <?php
                     if (isset($username_cookie)) {
                         ?>
-                    <div class="tabs">
-                        <li onclick="selecttab(event,'_informations')" class="selected">Informations</li>
-                        <li onclick="selecttab(event,'_password')" >Password</li>
-                        <li onclick="selecttab(event,'_avatar')">Avatar</li>
-                        <li onclick="selecttab(event,'_options')">Preferences</li>
-                    </div>
-                        <div class="holder">   
-                            
-                            <div class="tab _informations">
+
+
+
+
+
+
+                        <div class="tab _profile">
+                            <div class="sub">
                                 <span>
-                                    <p>username:</p>
+                                    <p>Name:</p>
                                     <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
                                 </span>
                                 <span>
-                                    <p>Name:</p>
+                                    <p>Email:</p>
+                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                </span>
+                                <span>
+                                    <p>URL:</p>
+                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                </span>
+                                <span>
+                                    <p>Location:</p>
+                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                </span>
+                                <span>
+                                    <p>Company:</p>
                                     <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
                                 </span>
                                 <span class=""><p>&nbsp;</p>
                                     <a  href="#" class="button"> Update </a>
                                 </span>
                             </div>
-                            
-                            <div class="tab _password">
+
+                            <div class="sub">
+                                <span>
+                                    <p>Avatar:</p>
+                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
+                                </span>
+                                <span class=""><p>&nbsp;</p>
+                                    <a  href="#" class="button"> Update </a>
+                                </span>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="tab _account">
+
+                            <div class="sub">
                                 <span>
                                     <p>Old Password:</p>
                                     <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
@@ -172,59 +215,101 @@ class logon extends application {
                                     <p>&nbsp;</p><a  href="#" class="button"> Change Password </a>
                                 </span>
                             </div>
-
-                            <div class="tab _avatar">
+                            <div class="sub">
                                 <span>
-                                    <p>Avatar:</p>
+                                    <p>Username:</p>
                                     <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
                                 </span>
-                                <span class=""><p>&nbsp;</p>
-                                    <a  href="#" class="button"> Update </a>
-                                </span>
-                            </div>
-
-                            <div class="tab _options">
-                                <span>
-                                    <p>Options:</p>
-                                    <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
-                                </span>
-                                <span class=""><p>&nbsp;</p>
-                                    <a  href="#" class="button"> Update </a>
-                                </span>
-                            </div>
-
-                            
-
-                            <div class="tab _options">
                                 <span class="">
-                                    Your are allready logged in!
+                                    <p>&nbsp;</p><a  href="#" class="button"> Change Password </a>
+                                </span>
+                            </div>
+
+                            <div class="sub">
+                                <span>
+                                    <p>&nbsp;</p>
+                                    <label><input type="checkbox"> im sure , delete my account</label>
+                                </span>
+                                <span class="">
+                                    <p>&nbsp;</p><a  href="#" class="button"> Delete Permanently</a>
+                                </span>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="tab _preferences">
+                            <div class="sub">
+                                <span>
+                                    <label><input type="checkbox"> Put me out of data rest</label>
+                                </span>
+                                <span>
+                                    <label><input type="checkbox"> Rest information need</label>
+                                </span>
+                                <span>
+                                    <label><input type="checkbox"> i dont know what to do whit this</label>
+                                </span>
+                                <span>
+                                    <label><input type="checkbox"> let thes hor much it can go further and we know it better</label>
+                                </span>
+                                <span>
+                                    <label><input type="checkbox"> some little cases with <small> ittle information</small></label>
+                                </span>
+                                <center>
+                                    <span class="">
+                                        <a  href="#" class="button"> Update </a>
+                                    </span>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="tab _logins">
+
+                            <div class="sub">
+                                <span class=""><p>Logins:</p>
+                                    You are logged in those locations
                                 </span>
                                 <span class=""><p>&nbsp;</p>
                                     <a onclick="logout<?= $this->window_id ?>(event);" href="#" class="button"> Logout </a>
                                 </span>
                             </div>
-                        </div> 
+                        </div>
+
+
+
+
+
+
+
+
                         <?php
                     } else {
                         ?>
-                        <div class="holder">
+                        <div class="uholder">
                             <span>
-                                <p>Username:</p>
+                                <p>&nbsp;<img src="<?= $imagedir ?>/key.png"></p>
+                                <label><b>User Login</b></label>
+                            </span>
+                            <span>
+                                <p><label>Username:</label></p>
                                 <input id="aramok-username<?= $this->window_id ?>" type="text" class="input">
                             </span>
                             <span>
-                                <p>Password:</p>
+                                <p><label>Password:</label></p>
                                 <input id="aramok-password<?= $this->window_id ?>" type="password" class="input">
                             </span>
 
                             <span>
                                 <p>&nbsp;</p>
                                 <a onclick="login<?= $this->window_id ?>(event);" href="#" class="button"> Login </a>
+                                <label><input type="checkbox"> Keep me logged in</label>
+                            </span>
+                            <span>
+                                <p>&nbsp;</p>
+                                <a href="#" class="lls">Forgot password</a> | <a href="#" class="lls">Register</a>
                             </span>
                         </div>
-                                    <!---<div id="connection_result<?= $this->window_id ?>"> 
-                                    
-                                    </div>--->
                         <?php
                     }
                     ?>
@@ -237,7 +322,19 @@ class logon extends application {
     }
 
     public function draw_application_toolbar() {
-        
+
+        $username_cookie = filter_input(INPUT_COOKIE, "username", FILTER_DEFAULT);
+        if (isset($username_cookie)) {
+            ?>
+            <div class="tabs">
+                <li onclick="selecttab(event, '_profile')" class="selected">Profile</li>
+                <li onclick="selecttab(event, '_account')" >Account</li>
+                <li onclick="selecttab(event, '_preferences')">Preferences</li>
+                <li onclick="selecttab(event, '_logins')">Logins</li>
+            </div>
+
+            <?php
+        }
     }
 
 }
