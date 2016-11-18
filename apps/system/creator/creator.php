@@ -29,33 +29,23 @@ class creator extends application {
                 padding:10px;
                 box-sizing: border-box;
             }
-            /* Essential FileDrop zone element configuration: */
-            .fd-zone {
-                position: relative;
-                overflow: hidden;
-                /* The following are not required but create a pretty box: */
-                width: 15em;
-                margin: 0 auto;
-                text-align: center;
+            div.info{
+                border:1px solid #fc0;
+                background-color:#ffc;
+                padding:5px;
+                color:#333;
+                margin-bottom:5px;
             }
-
-            /* Hides <input type="file"> while simulating "Browse" button: */
-            .fd-file {
-                opacity: 0;
-                font-size: 118px;
-                position: absolute;
-                right: 0;
-                top: 0;
-                z-index: 1;
-                padding: 0;
-                margin: 0;
-                cursor: pointer;
-                filter: alpha(opacity=0);
-                font-family: sans-serif;
+            
+            div.uform{
+                border:1px solid #666;
+                background-color:#999;
+                padding:5px;
             }
-
-            /* Provides visible feedback when user drags a file over the drop zone: */
-            .fd-zone.over { border-color: maroon; background: #eee; }
+            div.uform form{
+                padding:0px;
+                margin:0px;
+            }
         </style>
         <?php
     }
@@ -66,11 +56,16 @@ class creator extends application {
 
         <script>
             function upload(event){
-                event.preventDefault();
+                event.preventDefault();  
+
+                
                 $.ajax({
                     url: '<?= $jsdir ?>/upload.php',
                     type: 'post',
-                    data: $('.uploadform').serialize(),
+                    data: new FormData(document.getElementById('uploadform')),//$('.uploadform').serialize(),
+                    processData:false ,
+                    cache:false ,
+                    contentType:false,
                     xhr: function () {
                         var xhr = new window.XMLHttpRequest();
 
@@ -132,13 +127,15 @@ class creator extends application {
     private function dd_content() {
         ?>
         <div class="creator">
-            upload path: <?= $this->file ?> , or file create path
+            <div class="info"><b>upload path:</b><br><?= $this->file ?> </div>
 
-            <form class="uploadform" method="post" action="#" enctype="multipart/form-data">
-                <input type="hidden" name="path" value="<?= $this->file ?>">
-                <input type="file" name="files" multiple="multiple">
-                <input type="submit" onclick="upload(event);" value="upload">
-            </form>
+            <div class="uform">
+                <form id="uploadform" class="uploadform" method="post" action="#" enctype="multipart/form-data">
+                    <input type="hidden" name="path" value="<?= $this->file ?>">
+                    <input type="file" name="files" multiple="multiple"><br>
+                    <input type="submit" onclick="upload(event);" value="Upload" class="button">
+                </form>
+            </div>
             
         </div>
         <?php

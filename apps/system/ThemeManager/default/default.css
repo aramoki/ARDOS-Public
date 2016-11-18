@@ -88,13 +88,13 @@ div.desktop{
     padding-bottom:30px;
     box-sizing: border-box;
     background-color:#fff;
-    background-image:url('../../../../lib/wallpaper/back2.jpg');
+    background-image:url('../../../../lib/wallpaper/back.png');
 
     background-color:#fff;
-    background-size: cover;
+    /*background-size: cover;*/
     background-position-y: center;
     background-position-x: center;/*deplete*/
-    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
     /*background-size: auto 100%;*/
 
     /*-webkit-animation: desktopslide 3s ease forwards; */
@@ -188,7 +188,7 @@ div.window{
     left:0px;
     background-color:white;
     box-shadow:0px 0px 7px #555;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 div.window div.titlebar{
@@ -565,11 +565,11 @@ div.user p.username{
     display:block;
     cursor:pointer;
     font-size:13px;
-    text-shadow:1px 1px 0px #eee;
     border-radius:4px;
+    color:rgba(0,0,0,0.5);
 }
 div.user p.username:hover{
-    color:orangered;
+    color:rgba(0,0,0,1);
 }
 
 
