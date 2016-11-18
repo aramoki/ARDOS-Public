@@ -22,8 +22,9 @@ class imageviewer extends application {
 
         if (file_exists($file)) {
             list($img_w, $img_h) = getimagesize($file);
-            $this->window_width = $img_w + 20;
-            $this->window_height = $img_h + 20;
+            
+            $this->window_width = ($img_w > 1200)?1200:$img_w + 20;
+            $this->window_height = ($img_h > 650)?650:$img_h + 20;
 
             //$this->exifdata = exif_read_data($file, 0, true);
         } else {
@@ -41,6 +42,8 @@ class imageviewer extends application {
                 height: 100%;
                 width:100%;
                 text-align: center;
+                max-width:1000px;
+                max-height:900px;
 
             }
 
@@ -49,7 +52,6 @@ class imageviewer extends application {
             }
 
             div.imview img{
-                box-shadow:0px 0px 5px #333;
             }
 
             div.exifinformation{

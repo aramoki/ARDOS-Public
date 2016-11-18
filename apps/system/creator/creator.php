@@ -41,10 +41,19 @@ class creator extends application {
                 border:1px solid #666;
                 background-color:#999;
                 padding:5px;
+                margin-bottom:5px;
             }
             div.uform form{
                 padding:0px;
                 margin:0px;
+            }
+            
+            div.result{
+                border:1px solid green;
+                background-color:#cfc;
+                padding:5px;
+                margin-bottom:5px;
+                display:none;
             }
         </style>
         <?php
@@ -102,7 +111,9 @@ class creator extends application {
                         return xhr;
                     },
                     success: function (data, status) {
-                        alert(data);
+                        $(".result").html(data);
+                        $(".result").show();
+                        
                     },
                     error: function (xhr, desc, err) {
                         alert("Details: " + desc + "\nError:" + err + "--" + xhr);
@@ -128,7 +139,7 @@ class creator extends application {
         ?>
         <div class="creator">
             <div class="info"><b>upload path:</b><br><?= $this->file ?> </div>
-
+            
             <div class="uform">
                 <form id="uploadform" class="uploadform" method="post" action="#" enctype="multipart/form-data">
                     <input type="hidden" name="path" value="<?= $this->file ?>">
@@ -136,6 +147,7 @@ class creator extends application {
                     <input type="submit" onclick="upload(event);" value="Upload" class="button">
                 </form>
             </div>
+            <div class="result"></div>
             
         </div>
         <?php
